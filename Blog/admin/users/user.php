@@ -5,7 +5,8 @@ class user
     var $name = null;
     var $email = null;
     var $password = null;
-    var $phone = null;
+    var $avatar = null;
+    var $infor = null;
     var $role = null;
 
     public function getAllUsers()

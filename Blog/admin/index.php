@@ -23,8 +23,8 @@ ob_start();
 
 <body class="bg-primary">
   <?php
-  // session_start(); 
-  include "./includes/pdo.php";
+
+  include "../blogy-1.0.0/pdo/pdo.php";
   include "./users/user.php";
   include "./products/product.php";
   include "./categories/category.php";

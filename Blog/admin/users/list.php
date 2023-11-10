@@ -16,11 +16,11 @@
 
 
     <?php
-    include './includes/header.php';
+    include '../includes/header.php';
     ?>
     <div id="layoutSidenav">
         <?php
-        include './includes/nav.php';
+        include '../includes/nav.php';
         ?>
         <div id="layoutSidenav_content">
 
@@ -46,7 +46,8 @@
                                         <th>TÊN</th>
                                         <th>MẬT KHẨU</th>
                                         <th>EMAIL</th>
-                                        <th>SỐ ĐIỆN THOẠI</th>
+                                        <th>AVATAR</th>
+                                        <th>THÔNG TIN</th>
                                         <th>VAI TRÒ</th>
                                         <th>CHỨC NĂNG</th>
                                     </tr>
@@ -72,7 +73,8 @@
                                         echo '<td>' . $name . '</td>';
                                         echo '<td>' . $password . '</td>';
                                         echo '<td>' . $email . '</td>';
-                                        echo '<td>' . $phone . '</td>';
+                                        echo '<td>' . $avatar . '</td>';
+                                        echo '<td>' . $infor . '</td>';
                                         echo '<td>' . $roleNames[$role] . '</td>';
                                         echo '<td><a class="btn btn-outline-primary" data-bs-target="#modalEdit" href="' . $update . '"><i class="fas fa-edit" style="color: #0d6ef4;"></i>CẬP NHẬT </a>';
 
