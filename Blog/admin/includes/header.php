@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../css/styles.css">
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-secondary">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="#">MYBOOK STORE</a>
     <!-- Sidebar Toggle-->
@@ -17,12 +17,11 @@
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="./index.php?act=logout&action=admin">ĐĂNG XUẤT</a></li>
-                <!-- <li><a class="dropdown-item" href="#!">CÀI ĐẶT</a></li>
-                <li><a class="dropdown-item" href="#!">HOẠT ĐỘNG ĐĂNG NHẬP</a></li> -->
+                <li><a class="dropdown-item" href="./index.php?act=setting&action=set">CÀI ĐẶT</a></li>
+                <li><a class="dropdown-item" href="#!">HOẠT ĐỘNG ĐĂNG NHẬP</a></li>
                 <!-- <li>
                     <hr class="dropdown-divider" />
                 </li> -->
-
             </ul>
         </li>
     </ul>

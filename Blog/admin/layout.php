@@ -17,24 +17,24 @@ class Statistics
         return array('totalUsers' => count($allUsers), 'admins' => $adminCount, 'users' => $userCount);
     }
 
-    public function getProductStats()
-    {
-        $product = new products();
-        $allProducts = $product->getAllProducts();
-        return count($allProducts);
-    }
+    // public function getProductStats()
+    // {
+    //     $product = new products();
+    //     $allProducts = $product->getAllProducts();
+    //     return count($allProducts);
+    // }
 
-    public function getCommentStats()
-    {
-        $comment = new comment();
-        $allComments = $comment->getAllComments();
-        return count($allComments);
-    }
+    // public function getCommentStats()
+    // {
+    //     $comment = new comment();
+    //     $allComments = $comment->getAllComments();
+    //     return count($allComments);
+    // }
 }
 $stats = new Statistics();
 $userStats = $stats->getUserStats();
-$productStats = $stats->getProductStats();
-$commentStats = $stats->getCommentStats();
+// $productStats = $stats->getProductStats();
+// $commentStats = $stats->getCommentStats();
 
 
 ?>
@@ -65,6 +65,9 @@ $commentStats = $stats->getCommentStats();
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">TRANG CHỦ</h1>
+                    <div class="text-center">
+                        <img src="./img/Logo.png" class="rounded-circle mx-auto d-block w-25 m-5" alt="...">
+                    </div>
                     <div class="card mb-4">
                         <div class="container mt-5">
                             <div class="row">
@@ -94,7 +97,7 @@ $commentStats = $stats->getCommentStats();
                                 </div>
                                 <div class="col-md-4">
                                     <div class="card text-white bg-warning mb-3">
-                                        <div class="card-header">Tổng sản phấm</div>
+                                        <div class="card-header">Tổng bài viết </div>
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $productStats; ?></h5>
                                         </div>

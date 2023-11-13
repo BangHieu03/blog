@@ -73,6 +73,8 @@ ob_start();
           case 'table':
             include './users/thongke.php';
             break;
+          case 'information';
+            include './users/information/information_detail.php';
         }
         break;
       case 'fogot':
@@ -150,6 +152,12 @@ ob_start();
             break;
         }
         break;
+      case 'setting';
+        switch ($_GET['action']) {
+          case 'set':
+            include './set/setting.php';
+            break;
+        }
     }
   }
   ?>

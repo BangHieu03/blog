@@ -84,8 +84,7 @@
 
 </html>
 <?php
-// include '../includes/pdo.php';
-// include '../users/user.php';
+
 
 $name = $_POST['name'] ?? "";
 $password = $_POST['password'] ?? "";
