@@ -6,15 +6,15 @@ class user
     var $email = null;
     var $password = null;
     var $avatar = null;
-<<<<<<< Updated upstream
     var $infor = null;
-=======
     var $phone = null;
     var $name_real = null;
     var $date = null;
     var $sex = null;
->>>>>>> Stashed changes
+
     var $role = null;
+
+
 
     public function getAllUsers()
     {

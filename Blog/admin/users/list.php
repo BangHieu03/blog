@@ -13,19 +13,12 @@
 
 <body class="sb-nav-fixed">
     <?php
-<<<<<<< Updated upstream
-    include '../includes/header.php';
-    ?>
-    <div id="layoutSidenav">
-        <?php
-        include '../includes/nav.php';
-=======
     include '../admin/includes/header.php';
     ?>
     <div id="layoutSidenav">
+
         <?php
         include '../admin/includes/nav.php';
->>>>>>> Stashed changes
         ?>
         <div id="layoutSidenav_content">
 
@@ -51,16 +44,11 @@
                                         <th>TÀI KHOẢN</th>
                                         <th>MẬT KHẨU</th>
                                         <th>EMAIL</th>
-<<<<<<< Updated upstream
-                                        <th>AVATAR</th>
-                                        <th>THÔNG TIN</th>
-=======
                                         <th>SỐ ĐIỆN THOẠI</th>
                                         <th>AVATAR</th>
                                         <th>TÊN THẬT</th>
                                         <th>NGÀY SINH</th>
                                         <th>GIỚI TÍNH</th>
->>>>>>> Stashed changes
                                         <th>VAI TRÒ</th>
                                         <th>CHỨC NĂNG</th>
                                     </tr>
@@ -77,8 +65,8 @@
                                         // Thêm vào đây nếu bạn có thêm roles
                                     );
                                     $roleSex = array(
-                                        1=> 'Nam',
-                                        2=> 'Nữ',
+                                        1 => 'Nam',
+                                        2 => 'Nữ',
                                     );
                                     foreach ($allUsers as $user) {
 
@@ -90,16 +78,11 @@
                                         echo '<td>' . $name . '</td>';
                                         echo '<td>' . $password . '</td>';
                                         echo '<td>' . $email . '</td>';
-<<<<<<< Updated upstream
-                                        echo '<td>' . $avatar . '</td>';
-                                        echo '<td>' . $infor . '</td>';
-=======
                                         echo '<td>' . $phone . '</td>';
-                                        echo '<td><img src="../admin/img/'.$avatar.'" alt="Uploaded Image" width="70px"></td>';
+                                        echo '<td><img src="../admin/img/' . $avatar . '" alt="Uploaded Image" width="70px"></td>';
                                         echo '<td>' . $name_real . '</td>';
                                         echo '<td>' . $date . '</td>';
                                         echo '<td>' . $roleSex[$sex] . '</td>';
->>>>>>> Stashed changes
                                         echo '<td>' . $roleNames[$role] . '</td>';
                                         echo '<td><a class="btn btn-outline-primary" data-bs-target="#modalEdit" href="' . $update . '"><i class="fas fa-edit" style="color: #0d6ef4;"></i>CẬP NHẬT </a>';
 
