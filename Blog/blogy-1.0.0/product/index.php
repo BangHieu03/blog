@@ -1,7 +1,7 @@
 <!-- Start retroy layout blog posts -->
 <section class="section bg-light">
-	<div class="container">
-		<img src="../banner.png" alt="">
+	<div class="container ">
+		<img src="/images/banner.png" alt="">
 	</div>
 </section>
 <!-- End retroy layout blog posts -->
