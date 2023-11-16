@@ -20,7 +20,7 @@
 				<div class="widget">
 					<h3 class="mb-4">Công ty</h3>
 					<ul class="list-unstyled float-start links">
-						<li><a href="#">Về Chúng Tôi</a></li>
+						<li><a href="./index.php?pages=about&action=home">Về Chúng Tôi</a></li>
 						<li><a href="#">Dịch Vụ</a></li>
 						<li><a href="#">Tầm Nhìn</a></li>
 						<li><a href="#">Nhiệm Vụ</a></li>
@@ -119,11 +119,12 @@
 <script src="js/flatpickr.min.js"></script>
 
 
-<script src="../blogy-1.0.0/js/aos.js"></script>
-<script src="../blogy-1.0.0/js/glightbox.min.js"></script>
-<script src="../blogy-1.0.0/js/navbar.js"></script>
-<script src="../blogy-1.0.0/js/counter.js"></script>
-<script src="../blogy-1.0.0/js/custom.js"></script>
+<script src="../js/aos.js"></script>
+<script src="../js/glightbox.min.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/counter.js"></script>
+<script src="../js/custom.js"></script>
+<script src="../js/active.js"></script>
 
 
 </body>

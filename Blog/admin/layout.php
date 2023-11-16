@@ -66,7 +66,22 @@ $userStats = $stats->getUserStats();
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">TRANG CHỦ</h1>
                     <div class="text-center">
-                        <img src="./img/Logo.png" class="rounded-circle mx-auto d-block w-25 m-5" alt="...">
+                        <?php
+                        if (isset($_SESSION['admin'])) {
+                            // Khởi tạo đối tượng user
+                            $user = new user();
+                            // Lấy thông tin người dùng
+                            $userInfo = $user->getUserByName($_SESSION['admin']);
+                            // Lấy đường dẫn đến hình ảnh avatar
+                            $avatarPath = $userInfo['avatar'];
+
+                            echo "<h1 class='display-4'>Chào mừng, " . $_SESSION['admin'] .  "_Admin !</h1>";
+                            echo "<img src='./img/$avatarPath' class='rounded-circle m-4' alt='Avatar của " . $_SESSION['admin'] . "'>";
+                            echo "<p class='lead'>Rất vui được gặp lại bạn!</p>";
+                            // Hiển thị hình ảnh avatar
+
+                        }
+                        ?>
                     </div>
                     <div class="card mb-4">
                         <div class="container mt-5">
@@ -95,7 +110,7 @@ $userStats = $stats->getUserStats();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="card text-white bg-warning mb-3">
                                         <div class="card-header">Tổng bài viết </div>
                                         <div class="card-body">
@@ -110,7 +125,7 @@ $userStats = $stats->getUserStats();
                                             <h5 class="card-title"><?php echo $commentStats; ?></h5>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

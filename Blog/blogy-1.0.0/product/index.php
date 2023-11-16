@@ -1,75 +1,45 @@
-<?php
-require_once './blogy-1.0.0/incudes/header.php';
-?>
-
 <!-- Start retroy layout blog posts -->
 <section class="section bg-light">
 	<div class="container">
-		<div class="row align-items-stretch retro-layout">
-			<div class="col-md-4">
-				<a href="single.html" class="h-entry mb-30 v-height gradient">
-
-					<div class="featured-img" style="background-image: url('images/img_2_horizontal.jpg');"></div>
-
-					<div class="text">
-						<span class="date">Ngày 3 Tháng 11 Năm 2003</span>
-						<h2>AI</h2>
-					</div>
-				</a>
-				<a href="single.html" class="h-entry v-height gradient">
-
-					<div class="featured-img" style="background-image: url('images/img_5_horizontal.jpg');"></div>
-
-					<div class="text">
-						<span class="date">Ngày 3 Tháng 11 Năm 2003</span>
-						<h2>Đừng cho rằng dữ liệu người dùng của bạn trên đám mây là an toàn</h2>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="single.html" class="h-entry img-5 h-100 gradient">
-
-					<div class="featured-img" style="background-image: url('images/img_1_vertical.jpg');"></div>
-
-					<div class="text">
-						<span class="date">Apr. 14th, 2022</span>
-						<h2>Why is my internet so slow?</h2>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-				<a href="single.html" class="h-entry mb-30 v-height gradient">
-
-					<div class="featured-img" style="background-image: url('images/img_3_horizontal.jpg');"></div>
-
-					<div class="text">
-						<span class="date">Apr. 14th, 2022</span>
-						<h2>Startup vs corporate: What job suits you best?</h2>
-					</div>
-				</a>
-				<a href="single.html" class="h-entry v-height gradient">
-
-					<div class="featured-img" style="background-image: url('images/img_4_horizontal.jpg');"></div>
-
-					<div class="text">
-						<span class="date">Apr. 14th, 2022</span>
-						<h2>Thought you loved Python? Wait until you meet Rust</h2>
-					</div>
-				</a>
-			</div>
-		</div>
+		<img src="../banner.png" alt="">
 	</div>
 </section>
 <!-- End retroy layout blog posts -->
-
+<nav class="site-nav">
+	<div class="container">
+		<div class="menu-bg-wrap">
+			<div class="site-navigation">
+				<div class="row g-0 align-items-center">
+					<div class="col-5 text-center">
+						<ul class="text-start site-menu mx-auto">
+							<li><a href="#">Đang theo dõi</a></li>
+							<li><a href="#">Mới nhất</a></li>
+							<li><a href="#">Series</a></li>
+						</ul>
+					</div>
+					<div class="col-1 text-center">
+						<button type="button" class="btn btn-primary btn-lg"><a href="#">Viết bài</a></button>
+					</div>
+					<div class="col-5 text-center">
+						<ul class="text-start site-menu mx-auto">
+							<li><a href="#">Video</a></li>
+							<li><a href="#">Trending</a></li>
+							<li><a href="#">Bài viết đã lưu</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
 <!-- Start posts-entry -->
 <section class="section posts-entry">
 	<div class="container">
 		<div class="row mb-4">
 			<div class="col-sm-6">
-				<h2 class="posts-entry-title">Business</h2>
+				<h2 class="posts-entry-title">Mới nhất</h2>
 			</div>
-			<div class="col-sm-6 text-sm-end"><a href="category.html" class="read-more">Xem tất cả</a></div>
+			<div class="col-sm-6 text-sm-end"><a href="./index.php?pages=category&action=home" class="read-more">Xem tất cả</a></div>
 		</div>
 		<div class="row g-3">
 			<div class="col-md-9">
@@ -83,7 +53,7 @@ require_once './blogy-1.0.0/incudes/header.php';
 							<h2><a href="single.html">Thought you loved Python? Wait until you meet Rust</a></h2>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, nobis ea quis
 								inventore vel voluptas.</p>
-							<p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
+							<p><a href="../index.php?pages=single&action=home" class="btn btn-sm btn-outline-primary">Read More</a></p>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -509,7 +479,3 @@ require_once './blogy-1.0.0/incudes/header.php';
 
 	</div>
 </div>
-
-<?php
-require_once './blogy-1.0.0/incudes/footer.php';
-?>

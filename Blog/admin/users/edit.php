@@ -1,25 +1,33 @@
 <?php
 // Khởi tạo biến với giá trị mặc định
-$id = '';
+$user_id = '';
 $name = '';
 $password = '';
 $email = '';
 $phone = '';
+$avatar = '';
+$name_real = '';
+$date = '';
+$sex = '';
 $role = '';
+
 
 if (isset($_POST['update'])) {
     // Nếu form đã được gửi đi, lấy giá trị từ yêu cầu POST
-
-    $id = $_GET['id'];
+    $user_id = $_POST['user_id']; // Sửa lại ở đây
     $name = $_POST['name'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $avatar = $_POST['avatar'];
+    $name_real = $_POST['name_real'];
+    $date = $_POST['date'];
+    $sex = $_POST['sex'];
     $role = $_POST['role'];
-    
+
     // Cập nhật thông tin người dùng
     $user = new user();
-    $user->editUser($id, $name, $email, $password, $phone, $role);
+    $user->editUser($user_id, $name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role); // Sửa lại ở đây
     // Chuyển hướng người dùng về trang danh sách người dùng sau khi cập nhật
     header('Location: ./index.php?act=users&action=list');
 } else if (isset($_GET['id'])) {
@@ -30,6 +38,10 @@ if (isset($_POST['update'])) {
     $password = $userInfo['password'];
     $email = $userInfo['email'];
     $phone = $userInfo['phone'];
+    $avatar = $userInfo['avatar'];
+    $name_real = $userInfo['name_real'];
+    $date = $userInfo['date'];
+    $sex = $userInfo['sex'];
     $role = $userInfo['role'];
 }
 ?>
@@ -47,11 +59,10 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="container  bg-light rounded shadow-sm p-4">
-
         <h4 class="text-center">Cập nhật người dùng</h4>
-        <form method="POST" action="#" class="row g-3 needs-validation was-validated container bg-light p-4 rounded">
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <div class="col-md-12">
+        <form method="POST" action="#" enctype="multipart/form-data" class="row g-3 needs-validation was-validated container bg-light p-4 rounded">
+            <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
+            <div class="col-md-6">
                 <label for="name" class="form-label">Tài khoản</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
@@ -61,27 +72,27 @@ if (isset($_POST['update'])) {
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="password" class="form-label">Mật khẩu</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                     <input type="password" id="password" class="form-control" name="password" value="<?php echo $password; ?>" required>
                     <div class="invalid-feedback">
-                       Mật khẩu không được để trống.
+                        Mật khẩu không được để trống.
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="email" class="form-label">Email</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
                     <input type="email" id="email" class="form-control" name="email" value="<?php echo $email; ?>" required>
                     <div class="invalid-feedback">
-                       Email không được để trống.
+                        Email không được để trống.
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="phone" class="form-label">Số điện thoại</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
@@ -91,7 +102,47 @@ if (isset($_POST['update'])) {
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <label for="avatar" class="form-label">Avatar</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="file" id="avatar" class="form-control" name="avatar" value="<?php echo $avatar; ?>" required>
+                    <div class="invalid-feedback">
+                        Avatar không được để trống.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="name_real" class="form-label">Tên thật</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" class="form-control" id="name_real" name="name_real" value="<?php echo $name_real ?>" required>
+                    <div class="invalid-feedback">
+                        Tên thật không được để trống.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="date" class="form-label">Ngày sinh</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="date" class="form-control" id="date" name="date" value="<?php echo $date ?>" required>
+                    <div class="invalid-feedback">
+                        Ngày sinh không được để trống.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="sex" class="form-label">Giới tính</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <select class="form-control" id="sex" name="sex">
+                        <option value="1" <?php echo $sex  == 1 ? 'selected' : ''; ?>>Nam</option>
+                        <option value="2" <?php echo $sex  == 2 ? 'selected' : ''; ?>>Nữ</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <label for="role" class="form-label">Vai trò</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
@@ -101,7 +152,7 @@ if (isset($_POST['update'])) {
                     </select>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <a href="index.php?act=users&action=list" class="btn btn-secondary">Hủy</a>
                 <input type="submit" name="update" class="btn btn-success" value="Cập nhật">
             </div>

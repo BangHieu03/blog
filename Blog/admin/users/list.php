@@ -50,6 +50,7 @@
                                         <th>NGÀY SINH</th>
                                         <th>GIỚI TÍNH</th>
                                         <th>VAI TRÒ</th>
+                                        <th>THỜI GIAN TẠO</th>
                                         <th>CHỨC NĂNG</th>
                                     </tr>
                                 </thead>
@@ -84,7 +85,8 @@
                                         echo '<td>' . $date . '</td>';
                                         echo '<td>' . $roleSex[$sex] . '</td>';
                                         echo '<td>' . $roleNames[$role] . '</td>';
-                                        echo '<td><a class="btn btn-outline-primary" data-bs-target="#modalEdit" href="' . $update . '"><i class="fas fa-edit" style="color: #0d6ef4;"></i>CẬP NHẬT </a>';
+                                        echo '<td>' . $create_at . '</td>';
+                                        echo '<td><a class="btn btn-outline-primary data-bs-target="#modalEdit" href="' . $update . '"><i class="fas fa-edit" style="color: #0d6ef4;"></i>CẬP NHẬT </a>';
 
                                         // Chỉ hiển thị nút xóa nếu người dùng hiện tại không phải là người dùng này và người dùng này là quản trị viên
                                         if ($currentUserId != $user_id && $role == 1) {

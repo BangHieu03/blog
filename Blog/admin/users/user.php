@@ -5,14 +5,13 @@ class user
     var $name = null;
     var $email = null;
     var $password = null;
-    var $avatar = null;
-    var $infor = null;
     var $phone = null;
+    var $avatar = null;
     var $name_real = null;
     var $date = null;
     var $sex = null;
-
     var $role = null;
+    var $create_at = null;
 
 
 
@@ -51,10 +50,10 @@ class user
         $user = $db->pdo_query_one($select, $user_id);
         return $user;
     }
-    public function addUser($name, $email, $password, $avatar, $role)
+    public function addUser($name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role, $create_at)
     {
         $db = new connect();
-        $insert = "insert into users( name, email, password, phone, role) values('$name', '$email', '$password', '$avatar', '$role')";
+        $insert = "insert into users( name, email, password, phone, avatar ,name_real, date, sex, role, create_at) values('$name', '$email', '$password','$phone','$avatar', '$name_real','$date', '$sex', '$role', '$create_at')";
         $db->pdo_execute($insert);
     }
     public function deleteUser($user_id)
@@ -68,11 +67,11 @@ class user
             return false;
         }
     }
-    public function editUser($user_id, $name, $email, $password, $information_id, $avatar, $role)
+    public function editUser($user_id, $name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role)
     {
         $db = new connect();
-        $update = "update users SET name = '$name', email = '$email', password = '$password', information_id = '$information_id',avatar = $avatar, role = '$role' WHERE user_id = '$user_id'";
-        $db->pdo_execute($update, $name, $email, $password, $information_id, $avatar, $role);
+        $update = "update users SET  name = '$name', email = '$email', password = '$password', phone = '$phone',avatar = '$avatar', name_real = '$name_real', date = '$date', sex = '$sex' , role = '$role' WHERE user_id = '$user_id'";
+        $db->pdo_execute($update, $name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role);
     }
 
     public function getUserNameById($user_id)

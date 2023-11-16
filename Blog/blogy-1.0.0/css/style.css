@@ -9279,7 +9279,8 @@ textarea.form-control-lg {
       text-decoration: none !important;
       color: rgba(255, 255, 255, 0.7); }
       .site-nav .site-navigation .site-menu > li > a:hover {
-        color: #fff; }
+        color: #fff;
+        border-bottom: 1px solid #fff; }
     .site-nav .site-navigation .site-menu > li.active > a {
       color: #fff; }
   .site-nav .site-navigation .site-menu .has-children {
@@ -9685,7 +9686,7 @@ a, .btn {
     box-shadow: none; }
   .btn.btn-primary {
     color: #fff;
-    background-color: #214252; }
+    background-color: lightskyblue; }
     .btn.btn-primary:hover {
       border-color: #214252; }
   .btn.btn-outline-primary {
