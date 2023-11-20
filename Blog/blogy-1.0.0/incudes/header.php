@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -15,17 +18,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../css/tiny-slider.css">
-    <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/glightbox.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="stylesheet" href="../css/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/tiny-slider.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/flatpickr.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <title>MyBlog &mdash; Kết nối mọi người</title>
@@ -48,7 +50,7 @@
                 <div class="site-navigation">
                     <div class="row g-0 align-items-center">
                         <div class="col-2">
-                            <a href="./index.php?pages=index&action=home" class="logo m-0 float-start">MyBlog<span class="text-primary">.</span></a>
+                            <a href="./index.php?pages=index&action=home" class="logo m-0 float-start">PolyBlog<span class="text-primary">.</span></a>
                         </div>
                         <div class="col-4 text-center">
                             <!-- <form action="#" class="search-form d-inline-block d-lg-none mr-2">
@@ -75,8 +77,23 @@
                         </div>
                         <div class="col-2 text-start d-flex justify-content-around site-menu">
                             <div><i class="fas fa-bell" style="color: #757575;"></i></div>
-                            <div><i class="fas fa-pen" style="color: #757575;"></i></div>
-                            <div><a href="./index.php?pages=login&action=home" style="color:white">Đăng nhập</a></div>
+                            <div><a href="./index.php?pages=post&action=home"><i class="fas fa-pen" style="color: #757575;"></a></i></div>
+                            <div class="dropdown">
+                                <?php if (isset($_SESSION['user_info'])) : ?>
+                                    <button class="dropbtn" onclick="myFunction()">
+                                        <img src="/images/<?php echo $_SESSION['user_info']['avatar']; ?>" alt="Avatar" style="border-radius: 50%; width: 30px; height: 30px;">
+                                        <span><?php echo $_SESSION['user_info']['name']; ?></span>
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <a href="#">Tên thật: <?php echo $_SESSION['user_info']['name_real']; ?></a>
+                                        <a href="#">Sửa</a>
+                                        <a href="./index.php?pages=logout&action=home">Đăng xuất</a>
+                                    </div>
+                                <?php else : ?>
+                                    <a href="./index.php?pages=login&action=home" style="color:white">Đăng nhập</a>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>

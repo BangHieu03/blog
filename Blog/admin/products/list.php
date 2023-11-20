@@ -40,7 +40,7 @@
                                 </div>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th>
                                         <th>TÊN</th>
                                         <th>GIÁ TIỀN</th>
                                         <th>TRẠNG THÁI</th>
@@ -50,7 +50,7 @@
                                         <th>NXB</th>
                                         <th>SỐ TRANG</th>
                                         <th>NGÀY PHÁT HÀNH</th>
-                                        <th>CHỨC NĂNG</th>
+                                        <th>CHỨC NĂNG</th> -->
                                     </tr>
                                 </thead>
                                 <?php

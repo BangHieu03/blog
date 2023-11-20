@@ -4,7 +4,7 @@
 			<div class="col-lg-4">
 				<div class="widget">
 					<h3 class="mb-4">Giới Thiệu</h3>
-					<p>Chào mừng bạn đến với “MyBlog” - nơi câu chuyện của bạn được kể! Tại đây, chúng tôi tạo ra không gian cho mọi người để tự do bày tỏ và chia sẻ quan điểm cá nhân thông qua việc viết blog. 
+					<p>Chào mừng bạn đến với “PolyBlog” - nơi câu chuyện của bạn được kể! Tại đây, chúng tôi tạo ra không gian cho mọi người để tự do bày tỏ và chia sẻ quan điểm cá nhân thông qua việc viết blog. 
 						Hãy cùng nhau khám phá, chia sẻ và kết nối qua từng câu chuyện! MyBlog - Nơi câu chuyện của bạn được kể!.</p>
 				</div> <!-- /.widget -->
 				<div class="widget">
@@ -105,15 +105,15 @@
 </footer> <!-- /.site-footer -->
 
 <!-- Preloader -->
-<div id="overlayer"></div>
+<!-- <div id="overlayer"></div>
 <div class="loader">
 	<div class="spinner-border text-primary" role="status">
 		<span class="visually-hidden">Loading...</span>
 	</div>
-</div>
+</div> -->
 
 
-<script src="js/bootstrap.bundle.min.js"></script>
+<!-- <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/tiny-slider.js"></script>
 
 <script src="js/flatpickr.min.js"></script>
@@ -124,7 +124,7 @@
 <script src="../js/navbar.js"></script>
 <script src="../js/counter.js"></script>
 <script src="../js/custom.js"></script>
-<script src="../js/active.js"></script>
+<script src="../js/active.js"></script> -->
 
 
 </body>

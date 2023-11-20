@@ -37,12 +37,12 @@
                                 </div>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <!-- <th>ID</th>
                                         <th>SỐ LƯỢNG BÌNH LUẬN</th>
                                         <th>SỐ LƯỢNG XEM</th>
                                         <th>SẢN PHẨM</th>
                                         <th>THỜI GIAN</th>
-                                        <th>CHỨC NĂNG</th>
+                                        <th>CHỨC NĂNG</th> -->
                                     </tr>
                                 </thead>
                                 <?php
