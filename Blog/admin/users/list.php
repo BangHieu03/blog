@@ -21,7 +21,6 @@
         include '../admin/includes/nav.php';
         ?>
         <div id="layoutSidenav_content">
-
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">NGƯỜI DÙNG</h1>
@@ -51,6 +50,7 @@
                                         <th>GIỚI TÍNH</th>
                                         <th>VAI TRÒ</th>
                                         <th>THỜI GIAN TẠO</th>
+                                        <th>THỜI GIAN CẬP NHẬT</th>
                                         <th>CHỨC NĂNG</th>
                                     </tr>
                                 </thead>
@@ -72,8 +72,8 @@
                                     foreach ($allUsers as $user) {
 
                                         extract($user);
-                                        $delete = "index.php?act=users&action=delete&id=" . $user_id;
-                                        $update = "index.php?act=users&action=edit&id=" . $user_id;
+                                        $delete = "index.php?act=users&action=delete&user_id=" . $user_id;
+                                        $update = "index.php?act=users&action=edit&user_id=" . $user_id;
                                         echo '<tr>';
                                         echo '<td>' . $user_id . '</td>';
                                         echo '<td>' . $name . '</td>';
@@ -84,8 +84,13 @@
                                         echo '<td>' . $name_real . '</td>';
                                         echo '<td>' . $date . '</td>';
                                         echo '<td>' . $roleSex[$sex] . '</td>';
-                                        echo '<td>' . $roleNames[$role] . '</td>';
+                                        if (isset($roleNames[$role])) {
+                                            echo '<td>' . $roleNames[$role] . '</td>';
+                                        } else {
+                                            echo '<td> Role not defined </td>';
+                                        }
                                         echo '<td>' . $create_at . '</td>';
+                                        echo '<td>' . $update_at . '</td>';
                                         echo '<td><a class="btn btn-outline-primary data-bs-target="#modalEdit" href="' . $update . '"><i class="fas fa-edit" style="color: #0d6ef4;"></i>CẬP NHẬT </a>';
 
                                         // Chỉ hiển thị nút xóa nếu người dùng hiện tại không phải là người dùng này và người dùng này là quản trị viên

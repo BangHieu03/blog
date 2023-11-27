@@ -23,25 +23,38 @@
     <link rel="stylesheet" href="/css/tiny-slider.css">
     <link rel="stylesheet" href="/css/aos.css">
     <link rel="stylesheet" href="/css/glightbox.min.css">
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/flatpickr.min.css">
     <link rel="stylesheet" href="/css/down-menu.css">
+    <link rel="stylesheet" href="/css/aside.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/validate.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
-    <title>MyBlog &mdash; Kết nối mọi người</title>
+
+    <title>PolyBlog &mdash; Kết nối mọi người</title>
     <title>Document</title>
 </head>
 
 <body>
     <?php
     session_start();
+    ob_start();
     include './blogy-1.0.0/pdo/pdo.php';
     include './admin/users/user.php';
     include './blogy-1.0.0/incudes/header.php';
+    include './PHPMailer-master/index.php';
+    require_once './vendor/autoload.php';
+    $mail = new Mailer();
+
+
 
     if (isset($_GET['pages'])) {
         switch ($_GET['pages']) {
@@ -56,7 +69,50 @@
             case 'login':
                 switch ($_GET['action']) {
                     case 'home';
-                        include './blogy-1.0.0/login/dangnhap.php';
+                        include './blogy-1.0.0/auth/dangnhap.php';
+                        break;
+                    case 'fogot';
+                        include './blogy-1.0.0/auth/fogot.php';
+                        break;
+                    case 'reset';
+                        include './blogy-1.0.0/auth/reset_code.php.';
+                        break;
+                }
+                break;
+            case 'register':
+                switch ($_GET['action']) {
+                    case 'home';
+                        include './blogy-1.0.0/auth/dangky.php';
+                        break;
+                    case 'activated_code';
+                        include './blogy-1.0.0/auth/kichhoat.php';
+                        break;
+                }
+                break;
+            case 'edit_profile':
+                switch ($_GET['action']) {
+                    case 'home';
+                        include './blogy-1.0.0/edit/edit_profile.php';
+                        break;
+                }
+                break;
+            case 'information':
+                switch ($_GET['action']) {
+                    case 'home';
+                        include './blogy-1.0.0/edit/information/person.php';
+                        break;
+                    case 'email';
+                        include './blogy-1.0.0/edit/information/verify_email.php';
+                        break;
+                }
+                break;
+            case 'security':
+                switch ($_GET['action']) {
+                    case 'home';
+                        include './blogy-1.0.0/edit/security/password.php';
+                        break;
+                    case 'linked';
+                        include './blogy-1.0.0/edit/security/linked_account.php';
                         break;
                 }
                 break;
@@ -109,6 +165,13 @@
                         break;
                 }
                 break;
+            case 'rules':
+                switch ($_GET['action']) {
+                    case 'home':
+                        include './blogy-1.0.0/rules/dieukhoan.php';
+                        break;
+                }
+                break;
             case 'post':
                 switch ($_GET['action']) {
                     case 'home':
@@ -126,14 +189,17 @@
             case 'google':
                 switch ($_GET['action']) {
                     case 'home':
-                        include './blogy-1.0.0/login/google.php';
+                        include './Google_login/home.php';
+                        break;
+                    case 'login':
+                        include './Google_login/login.php';
                         break;
                 }
                 break;
         }
     }
-    include './blogy-1.0.0/incudes/footer.php';
     ob_end_flush();
+    include './blogy-1.0.0/incudes/footer.php';
     ?>
     <div id="overlayer"></div>
     <div class="loader">
@@ -151,7 +217,12 @@
 <script src="/js/counter.js"></script>
 <script src="/js/custom.js"></script>
 <script src="/js/active.js"></script>
-<script src="/js/form.js"></script>
+<script src="/js/ckeditor.js"></script>
 <script src="/js/down-menu.js"></script>
+<script src="/js/aside.js"></script>
+<script src="/js/popover.js"></script>
+<script src="/js/rules.js"></script>
+<script src="/js/person.js"></script>
+<script src="/js/fogot.js"></script>
 
 </html>

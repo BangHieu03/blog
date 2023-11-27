@@ -42,7 +42,7 @@
 	<div class="site-navigation">
 		<div class="row g-0 align-items-center" style="background-color: #3D5662;">
 			<div class="m-3 text-center">
-				<h5><a class="text-light" href="https://www.facebook.com/groups/895365322303983" target="_blank"> >>Tham gia facebook group "MyBlog" cùng nhau chia sẽ câu chuyện của mình<< </a>
+				<h5><a class="text-light" href="https://www.facebook.com/groups/895365322303983" target="_blank"> >>Tham gia facebook group "PolyBlog" cùng nhau chia sẽ câu chuyện của mình<< </a>
 				</h5>
 			</div>
 		</div>

@@ -18,14 +18,13 @@
 			</div> <!-- /.col-lg-4 -->
 			<div class="col-lg-4 ps-lg-5">
 				<div class="widget">
-					<h3 class="mb-4">Công ty</h3>
+					<h3 class="mb-4">Tài nguyên</h3>
 					<ul class="list-unstyled float-start links">
 						<li><a href="./index.php?pages=about&action=home">Về Chúng Tôi</a></li>
-						<li><a href="#">Dịch Vụ</a></li>
-						<li><a href="#">Tầm Nhìn</a></li>
-						<li><a href="#">Nhiệm Vụ</a></li>
-						<li><a href="#">Điều Kiện</a></li>
-						<li><a href="#">Sự Riêng Tư</a></li>
+						<li><a href="#">Bài viết</a></li>
+						<li><a href="#">Câu hỏi</a></li>
+						<li><a href="#">Videos</a></li>
+						<li><a href="#">Thảo luận</a></li>
 					</ul>
 					<ul class="list-unstyled float-start links">
 						<li><a href="#">Đối Tác</a></li>

@@ -10,6 +10,7 @@ $name_real = '';
 $date = '';
 $sex = '';
 $role = '';
+$update_at = '';
 
 
 if (isset($_POST['update'])) {
@@ -24,16 +25,17 @@ if (isset($_POST['update'])) {
     $date = $_POST['date'];
     $sex = $_POST['sex'];
     $role = $_POST['role'];
+    $update_at = $_POST['update_at'];
 
     // Cập nhật thông tin người dùng
     $user = new user();
-    $user->editUser($user_id, $name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role); // Sửa lại ở đây
+    $user->editUser($user_id, $name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role, $update_at);
     // Chuyển hướng người dùng về trang danh sách người dùng sau khi cập nhật
     header('Location: ./index.php?act=users&action=list');
-} else if (isset($_GET['id'])) {
+} else if (isset($_GET['user_id'])) {
     // Nếu có id trong yêu cầu GET, lấy thông tin người dùng từ cơ sở dữ liệu
     $user = new user();
-    $userInfo = $user->getUserById($_GET['id']);
+    $userInfo = $user->getUserById($_GET['user_id']);
     $name = $userInfo['name'];
     $password = $userInfo['password'];
     $email = $userInfo['email'];
@@ -43,13 +45,13 @@ if (isset($_POST['update'])) {
     $date = $userInfo['date'];
     $sex = $userInfo['sex'];
     $role = $userInfo['role'];
+    $create_at = $userInfo['create_at'];
 }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +62,7 @@ if (isset($_POST['update'])) {
 <body>
     <div class="container  bg-light rounded shadow-sm p-4">
         <h4 class="text-center">Cập nhật người dùng</h4>
-        <form method="POST" action="#" enctype="multipart/form-data" class="row g-3 needs-validation was-validated container bg-light p-4 rounded">
+        <form method="POST" action="#" class="row g-3 needs-validation was-validated container bg-light p-4 rounded">
             <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
             <div class="col-md-6">
                 <label for="name" class="form-label">Tài khoản</label>
@@ -76,7 +78,7 @@ if (isset($_POST['update'])) {
                 <label for="password" class="form-label">Mật khẩu</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                    <input type="password" id="password" class="form-control" name="password" value="<?php echo $password; ?>" required>
+                    <input type="password" id="password" class="form-control" name="password" value="<?php echo $password ?>" required>
                     <div class="invalid-feedback">
                         Mật khẩu không được để trống.
                     </div>
@@ -86,7 +88,7 @@ if (isset($_POST['update'])) {
                 <label for="email" class="form-label">Email</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                    <input type="email" id="email" class="form-control" name="email" value="<?php echo $email; ?>" required>
+                    <input type="email" id="email" class="form-control" name="email" value="<?php echo $email ?>" required>
                     <div class="invalid-feedback">
                         Email không được để trống.
                     </div>
@@ -96,7 +98,7 @@ if (isset($_POST['update'])) {
                 <label for="phone" class="form-label">Số điện thoại</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                    <input id="phone" name="phone" class="form-control" value="<?php echo $phone; ?>" onkeypress="return isNumberKey(event)" required>
+                    <input id="phone" name="phone" class="form-control" value="<?php echo $phone ?>" onkeypress="return isNumberKey(event)" required>
                     <div class="invalid-feedback">
                         Số điện thoại không được để trống.
                     </div>
@@ -106,7 +108,7 @@ if (isset($_POST['update'])) {
                 <label for="avatar" class="form-label">Avatar</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
-                    <input type="file" id="avatar" class="form-control" name="avatar" value="<?php echo $avatar; ?>" required>
+                    <input type="file" id="avatar" name="avatar" class="form-control"  value="<?php echo $avatar ?>" required>
                     <div class="invalid-feedback">
                         Avatar không được để trống.
                     </div>

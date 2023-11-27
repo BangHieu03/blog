@@ -1,9 +1,9 @@
 <?php 
 if (isset($_POST['delete'])) {
-    $id = $_GET['id'];
+    $user_id = $_GET['user_id'];
     $result = new user();
-    $result->deleteUser($id);
-    $delete = "delete from users WHERE id = '{$id}'";
+    $result->deleteUser($user_id);
+    $delete = "delete from users WHERE user_id = '{$user_id}'";
     if($delete){
     header('Location:./index.php?act=users&action=list');
     }else{

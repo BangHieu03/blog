@@ -15,7 +15,7 @@ ob_start();
   <link href="./css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-  <link rel="shortcut icon" type="image/png" href="./trangchinh/img/LOGO - Copy.png" />
+  <link rel="shortcut icon" type="image/png" href="../blogy-1.0.0/favicon.png" />
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
@@ -23,7 +23,6 @@ ob_start();
 
 <body class="bg-primary">
   <?php
-
   include "../blogy-1.0.0/pdo/pdo.php";
   include "./users/user.php";
   include "./products/product.php";

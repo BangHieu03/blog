@@ -19,7 +19,7 @@ if (isset($_POST['addUser'])) {
     echo $name;
     if (
         !empty($name) &&   !empty($email) &&   !empty($password) &&
-        !empty($phone) &&   !empty($avatar) &&   !empty($name_real) &&   !empty($date) &&   !empty($date) &&   !empty($role)
+        !empty($phone) &&   !empty($avatar) &&   !empty($name_real) &&   !empty($date) &&   !empty($date) &&   !empty($role) 
     ) {
         $tmp_name_file = $_FILES["avatar"]["tmp_name"];
         $file_size = $_FILES["avatar"]["size"];
