@@ -1,6 +1,6 @@
 <section class="el-container">
     <?php
-    include './blogy-1.0.0/incudes/aside_edit.php';
+    include './blogy-1.0.0/includes/aside_edit.php';
     ?>
     <main class="el-main">
         <div class="container py-4 ">
