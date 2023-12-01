@@ -28,11 +28,9 @@
 					</ul>
 					<ul class="list-unstyled float-start links">
 						<li><a href="#">Đối Tác</a></li>
-						<li><a href="#">Kinh Doanh</a></li>
 						<li><a href="#">Nghề Nghiệp</a></li>
 						<li><a href="#">Blog</a></li>
 						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Sáng Tạo</a></li>
 					</ul>
 				</div> <!-- /.widget -->
 			</div> <!-- /.col-lg-4 -->

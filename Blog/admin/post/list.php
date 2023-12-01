@@ -54,9 +54,9 @@
                                     </tr>
                                 </thead>
                                 <?php
-                                $product = new products();
+                                $product = new posts();
                                 $category = new category(); // Khởi tạo đối tượng category
-                                $AllProduct = $product->getAllProducts();
+                                $AllProduct = $product->getAllPosts();
                                 foreach ($AllProduct as $product) {
                                     extract($product);
                                     $delete="index.php?act=products&action=delete&id=".$id;

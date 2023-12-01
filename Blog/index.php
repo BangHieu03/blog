@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/validate.css">
+    <link rel="stylesheet" href="/css/faceboo.css">
+    <link rel="stylesheet" href="/css/page_person.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -49,9 +51,10 @@
     ob_start();
     include './blogy-1.0.0/pdo/pdo.php';
     include './admin/users/user.php';
-    include './blogy-1.0.0/incudes/header.php';
+    include './blogy-1.0.0/includes/header.php';
     include './PHPMailer-master/index.php';
     require_once './vendor/autoload.php';
+
     $mail = new Mailer();
 
 
@@ -93,6 +96,16 @@
                 switch ($_GET['action']) {
                     case 'home';
                         include './blogy-1.0.0/edit/edit_profile.php';
+                        break;
+                }
+                break;
+            case 'page_person':
+                switch ($_GET['action']) {
+                    case 'home';
+                        include './blogy-1.0.0/edit/pages/page_person.php';
+                        break;
+                    case 'contact';
+                        include './blogy-1.0.0/edit/pages/contact.php';
                         break;
                 }
                 break;
@@ -189,17 +202,33 @@
             case 'google':
                 switch ($_GET['action']) {
                     case 'home':
-                        include './Google_login/home.php';
+                        include './Google_login/index.php';
                         break;
                     case 'login':
                         include './Google_login/login.php';
+                        break;
+                    case 'logout':
+                        include './Google_login/logout.php';
+                        break;
+                    case 'dashboarh':
+                        include './Google_login/dashboarh.php';
+                        break;
+                }
+                break;
+            case 'facebook':
+                switch ($_GET['action']) {
+                    case 'login':
+                        include './facebook_login/login.php';
+                        break;
+                    case 'oauth':
+                        include './facebook_login/facebook-oauth.php';
                         break;
                 }
                 break;
         }
     }
     ob_end_flush();
-    include './blogy-1.0.0/incudes/footer.php';
+    include './blogy-1.0.0/includes/footer.php';
     ?>
     <div id="overlayer"></div>
     <div class="loader">
@@ -224,5 +253,8 @@
 <script src="/js/rules.js"></script>
 <script src="/js/person.js"></script>
 <script src="/js/fogot.js"></script>
+<script src="/js/facebook.js"></script>
+<script src="/js/pages_person.js"></script>
+
 
 </html>

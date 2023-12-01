@@ -1,11 +1,34 @@
 <?php
-require_once('./vendor/autoload.php');
-// Database configuration
 
+  //Include Google Configuration File
+  include('./Google_login/config.php');
 
-$goo = new Google\Client();
-$goo->setClientId("891212156778-pe9o09r10pfqq0pqb66kv9f3d54t10sm.apps.googleusercontent.com");
-$goo->setClientSecret("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");
-$goo->setRedirectUri("http://localhost/duan1/index.php?pages=google&action=home");
-$goo->addScope("email");
-$goo->addScope("profile");
+  if(!isset($_SESSION['access_token'])) {
+   //Create a URL to obtain user authorization
+   $google_login_btn = '<a href="'.$google_client->createAuthUrl().'"><img src="//www.tutsmake.com/wp-content/uploads/2019/12/google-login-image.png" /></a>';
+  } else {
+
+    header("Location:./index.php?pages=google&action=dashboard");
+  }
+?>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>PHP Login With Google</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  
+ </head>
+ <body>
+  <div class="container">
+   <br />
+   <h2 align="center">PHP Login With Google</h2>
+   <br />
+   <div class="panel panel-default">
+   <?php
+    echo '<div align="center">'.$google_login_btn . '</div>';
+   ?>
+   </div>
+  </div>
+ </body>
+</html>

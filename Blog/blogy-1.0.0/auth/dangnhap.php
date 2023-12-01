@@ -101,10 +101,10 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-block btn-social btn-google">
-                            <i class="fab fa-google" style="color: #ffffff;"></i> <a href="./index.php?pages=google&action=home">Đăng nhập với Google</a>
+                            <i class="fab fa-google" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=google&action=home">Đăng nhập với Google</a>
                         </button>
                         <button class="btn btn-block btn-social btn-facebook">
-                            <i class="fab fa-facebook-f" style="color: #ffffff;"></i> Đăng nhập với Facebook
+                            <i class="fab fa-facebook-f" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=facebook&action=login">Đăng nhập với Facebook</a>
                         </button>
                         <button class="btn btn-block btn-social btn-github">
                             <i class="fab fa-github" style="color: #ffffff;"></i> Đăng nhập với GitHub
