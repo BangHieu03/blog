@@ -1,5 +1,5 @@
 <?php 
-require_once"./vendor/autoload.php";
+require_once'../vendor/autoload.php';
 
 
 if(!isset($_SESSION["token"])){
@@ -19,3 +19,4 @@ echo "<h1>YOU ARE SIGNED IN!</h1>";
 echo "<div>";
 print_r($user);
 echo "</div>";
+?>

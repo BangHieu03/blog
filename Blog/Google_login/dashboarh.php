@@ -2,7 +2,7 @@
 
 //Include Google Configuration File
 include('./Google_login/config.php');
-require_once './vendor/composer/autoload_real.php';
+require_once '../vendor/autoload.php';
 
 if($_SESSION['access_token'] == '') {
   header("Location: ./index.php?pages=google&action=home");

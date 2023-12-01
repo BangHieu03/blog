@@ -1,5 +1,5 @@
 <?php
-require_once './vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 // Cài đặt thông tin OAuth 2.0
 $client = new Google_Client();

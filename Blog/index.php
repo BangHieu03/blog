@@ -53,7 +53,7 @@
     include './admin/users/user.php';
     include './blogy-1.0.0/includes/header.php';
     include './PHPMailer-master/index.php';
-    require_once './vendor/autoload.php';
+    require_once './vendor/composer/autoload_real.php';
 
     $mail = new Mailer();
 
