@@ -1,0 +1,237 @@
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+h1 {
+    color: black;
+    text-decoration: none;
+}
+
+p {
+    text-align: justify;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.list {
+    padding-bottom: 10px;
+}
+
+.add_comment,
+.add_new_comment {
+    cursor: pointer;
+    color: blue;
+}
+
+.new_comment_area {
+    display: none;
+}
+
+.fa {
+    font-size: 1em;
+}
+
+i {
+
+    cursor: pointer;
+}
+
+.reply_cm {
+
+    font-size: 12px;
+}
+
+.to-user {
+    color: blue;
+}
+
+.cm_main {
+    border: 1px solid #1d9189 !important;
+
+}
+
+.cm_main {
+    border-radius: 10px;
+}
+
+.cm_head {
+    background: #fafafa;
+}
+
+.cm_author {
+    font-size: 12px;
+}
+
+.cm_mainr {
+    border: 1px solid #6CF959;
+    border-radius: 10px;
+    margin-left: 20px !important;
+}
+
+.cm_reply {
+    float: right;
+}
+
+.reply {
+    font-size: 14px;
+}
+
+.alert {
+    color: #FF3131;
+    font-size: 13px;
+}
+
+.right {
+    float: right;
+}
+
+.about_author {
+    font-size: 12px;
+}
+
+.author {
+    font-size: 14px;
+}
+
+.author_username {
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.container {
+
+
+
+    width: 100%;
+    background-color: #FEFEFE;
+    margin: 0 auto;
+    overflow: hidden;
+
+
+}
+
+.content {
+    padding: 10px 100px;
+    width: 60%;
+    float: left;
+    border-left-color: #FFF;
+    border-right-color: #FFF;
+}
+
+.content h1 {
+    text-decoration: none;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+
+}
+
+.sidebar a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.sidebar {
+    float: right;
+    width: 20%;
+    padding-bottom: 10px;
+    background-color: #eee;
+
+
+}
+
+.footer {
+    background-color: #555;
+    color: #fff;
+    clear: both;
+}
+
+.footer a {
+    color: #F272EC;
+    text-decoration: none;
+}
+
+.readbtn {
+    transition: all linear 0.2s;
+    background: #66ad44;
+
+    border: none;
+    font-size: 13px;
+    line-height: 22px;
+    border-radius: 0;
+    padding: 6px 14px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 2px;
+
+    color: white;
+}
+
+.readbtn a {
+    text-decoration: none;
+    color: #FEFEFE;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: none;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
+
+
+.ulclass {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
