@@ -31,14 +31,17 @@
     <link rel="stylesheet" href="/css/validate.css">
     <link rel="stylesheet" href="/css/faceboo.css">
     <link rel="stylesheet" href="/css/page_person.css">
+    <link rel="stylesheet" href="/css/popup.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
     <title>PolyBlog &mdash; Kết nối mọi người</title>
@@ -53,10 +56,8 @@
     include './admin/users/user.php';
     include './blogy-1.0.0/includes/header.php';
     include './PHPMailer-master/index.php';
-    require_once './vendor/composer/autoload_real.php';
-
+    require_once '../vendor/autoload.php';
     $mail = new Mailer();
-
 
 
     if (isset($_GET['pages'])) {
@@ -192,36 +193,36 @@
                         break;
                 }
                 break;
-            case 'auth':
-                switch ($_GET['action']) {
-                    case 'home':
-                        include './blogy-1.0.0/incudes/header.php';
-                        break;
-                }
-                break;
             case 'google':
                 switch ($_GET['action']) {
-                    case 'home':
+                    case 'index':
                         include './Google_login/index.php';
-                        break;
-                    case 'login':
-                        include './Google_login/login.php';
                         break;
                     case 'logout':
                         include './Google_login/logout.php';
-                        break;
-                    case 'dashboarh':
-                        include './Google_login/dashboarh.php';
                         break;
                 }
                 break;
             case 'facebook':
                 switch ($_GET['action']) {
-                    case 'login':
-                        include './facebook_login/login.php';
+                    case 'index':
+                        include './facebook_login/index.php';
                         break;
                     case 'oauth':
                         include './facebook_login/facebook-oauth.php';
+                        break;
+                }
+                break;
+            case 'github':
+                switch ($_GET['action']) {
+                    case 'index':
+                        require_once '../Github_login/index.php';
+                        break;
+                    case 'oauth':
+                        require_once '../Github_login/src/Github_OAuth_Client.php';
+                        break;
+                    case 'config':
+                        require_once '../Github_login/config.php';
                         break;
                 }
                 break;
@@ -251,10 +252,11 @@
 <script src="/js/aside.js"></script>
 <script src="/js/popover.js"></script>
 <script src="/js/rules.js"></script>
-<script src="/js/person.js"></script>
 <script src="/js/fogot.js"></script>
 <script src="/js/facebook.js"></script>
 <script src="/js/pages_person.js"></script>
+<script src="/js/popup.js"></script>
+<script src="./js/chatbox"></script>
 
 
 </html>

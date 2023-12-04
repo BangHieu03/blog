@@ -1,7 +1,7 @@
 <?php 
  
 // Include configuration file 
-require_once './Google_login/config.php'; 
+require_once 'config.php'; 
  
 // Remove token and user data from the session 
 unset($_SESSION['token']); 
@@ -14,7 +14,7 @@ $gClient->revokeToken();
 session_destroy(); 
  
 // Redirect to homepage 
-header("Location: ./index.php?pages=google&action=home"); 
+header("Location: index.php"); 
 exit(); 
  
 ?>

@@ -56,11 +56,11 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="username">Tên đăng nhập:</label>
-                        <input type="text" id="username" name="username" class="form-control">
+                        <input type="text" id="username" name="username" placeholder="Tên đăng nhập hoặc emmail" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Mật khẩu:</label>
-                        <input type="password" id="password" name="password" class="form-control">
+                        <input type="password" id="password" name="password" placeholder="mật khẩu" class="form-control">
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Đăng nhập" class="btn btn-primary btn-block">
@@ -71,27 +71,33 @@
                     </div>
                     <?php
                     // Bắt đầu đệm đầu ra
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['username']) && !empty($_POST['password'])) {
                         $username = $_POST['username'];
                         $password = $_POST['password'];
                         $user = new user();
-                        if ($user->checkUser($username)) {
+                        // Kiểm tra xem đầu vào có phải là email không
+                        if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+                            // Nếu là email, sử dụng hàm getUserByEmail
+                            $user_info = $user->getUserByEmail($username);
+                        } else {
+                            // Nếu không phải email, sử dụng hàm getUserByName
+                            $user_info = $user->getUserByName($username);
+                        }
+                        if ($user_info) {
                             // Kiểm tra mật khẩu
-                            if ($user->verifyPassword($username, $password)) {
-                                // Lấy thông tin người dùng
-                                $user_id = $user->userId($username);
-                                $user_info = $user->getUserById($user_id);
+                            if ($user->verifyPassword($user_info['name'], $password)) {
                                 // Lưu thông tin người dùng vào session
                                 $_SESSION['user_info'] = $user_info;
                                 header('Location: ./index.php?pages=index&action=home');
                             } else {
-                                echo 'Tài khoản hoặc mật khẩu không đúng.';
+                                echo '<div style="color: red">Tài khoản hoặc mật khẩu không đúng.</div>';
                             }
                         } else {
-                            echo 'Tên đăng nhập không tồn tại.';
+                            echo '<div style="color: red">Tên đăng nhập hoặc email không tồn tại.</div>';
                         }
                     }
                     // Kết thúc đệm đầu ra và gửi đầu ra đến trình duyệt
+                    
                     ?>
                     <div class="d-flex align-items-center justify-content-between my-4 default_cursor_cs">
                         <hr class="flex-fill m-0"> <span class="mx-3">
@@ -101,13 +107,13 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-block btn-social btn-google">
-                            <i class="fab fa-google" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=google&action=home">Đăng nhập với Google</a>
+                            <i class="fab fa-google" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=google&action=index">Đăng nhập với Google</a>
                         </button>
                         <button class="btn btn-block btn-social btn-facebook">
-                            <i class="fab fa-facebook-f" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=facebook&action=login">Đăng nhập với Facebook</a>
+                            <i class="fab fa-facebook-f" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=facebook&action=index">Đăng nhập với Facebook</a>
                         </button>
                         <button class="btn btn-block btn-social btn-github">
-                            <i class="fab fa-github" style="color: #ffffff;"></i> Đăng nhập với GitHub
+                            <i class="fab fa-github" style="color: #ffffff;"></i><a class="text-light" href="./index.php?pages=github&action=index">Đăng nhập với Github</a>
                         </button>
                     </div>
                 </form>
@@ -121,9 +127,9 @@
     // Lấy tất cả các trường input trong form
     var inputs = document.querySelectorAll('form input[type="text"], form input[type="password"]');
 
-    // Thêm sự kiện 'blur' (khi người dùng nhấp ra khỏi trường input) cho mỗi trường input
+    // Thêm sự kiện 'input' (khi người dùng nhập vào trường input) cho mỗi trường input
     inputs.forEach(function(input) {
-        input.addEventListener('blur', function() {
+        input.addEventListener('input', function() {
             // Kiểm tra xem trường input có được điền hay không
             if (input.value.trim() === '') {
                 // Nếu không, thêm class 'is-invalid' để hiển thị cảnh báo
@@ -135,7 +141,12 @@
                     errorDiv.className = 'invalid-feedback';
                     input.parentNode.appendChild(errorDiv);
                 }
-                errorDiv.textContent = 'Không được để trống.';
+                // Kiểm tra xem trường input là gì và hiển thị thông báo lỗi phù hợp
+                if (input.getAttribute('type') === 'text') {
+                    errorDiv.textContent = 'Tên đăng nhập/email không được để trống.';
+                } else if (input.getAttribute('type') === 'password') {
+                    errorDiv.textContent = 'Mật khẩu không được để trống.';
+                }
             } else {
                 // Nếu có, xóa class 'is-invalid' và thông báo lỗi
                 input.classList.remove('is-invalid');

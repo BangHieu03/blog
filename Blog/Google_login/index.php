@@ -1,34 +1,63 @@
 <?php
 
-  //Include Google Configuration File
-  include('./Google_login/config.php');
+$google_client = new Google_Client();
 
-  if(!isset($_SESSION['access_token'])) {
-   //Create a URL to obtain user authorization
-   $google_login_btn = '<a href="'.$google_client->createAuthUrl().'"><img src="//www.tutsmake.com/wp-content/uploads/2019/12/google-login-image.png" /></a>';
-  } else {
+$google_client->setClientId('891212156778-pe9o09r10pfqq0pqb66kv9f3d54t10sm.apps.googleusercontent.com');
+$google_client->setClientSecret('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');
+$google_client->setRedirectUri('http://blog.com/index.php?pages=google&action=index');
+$google_client->addScope('email');
+$google_client->addScope('profile');
 
-    header("Location:./index.php?pages=google&action=dashboard");
-  }
+$google_client->setHttpClient(
+    new \GuzzleHttp\Client([
+        'verify' => false, // Tắt xác minh chứng chỉ SSL (lưu ý: không an toàn)
+    ])
+);
+
+
+if (isset($_GET["code"])) {
+    try {
+        $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+        if (!isset($token["error"])) {  // nếu lỗi trong quá trình lấy token sẽ có một mảng lỗi
+            $google_client->setAccessToken($token['access_token']);  // set token cho $google_client để sử dụng
+
+            $google_service = new Google_Service_Oauth2($google_client);
+
+            $data = $google_service->userinfo->get();  // lấy thông tin người dùng
+            $name = $data['name'];
+            $email = $data['email'];
+            $thumbnail = $data['picture'];
+
+            // Lưu ảnh vào thư mục source
+            $imageContent = file_get_contents($thumbnail);
+            $imageFileName = './uploaded/user/' . $email . '_thumbnail.jpg';
+            $imageSaveData = $email . '_thumbnail.jpg';
+            file_put_contents($imageFileName, $imageContent);
+
+
+            // kiểm tra tài khoảng theo email người dùng đã có chưa
+            $users = new user();
+            $info_user = $users->getUserByEmail($email);
+
+            if ($info_user) {
+                $_SESSION['user_info'] = $info_user;
+                header("Location: http://blog.com/index.php?pages=index&action=home");
+            } else {
+                $users->addUser($name, $email, null, null, $imageSaveData, $name, null, null, null, null, null);
+                $info_user = $users->getUserByEmail($email);
+                $_SESSION['user_info'] = $info_user;
+                header("Location: http://blog.com/index.php?pages=index&action=home");
+            }
+        }
+    } catch (Exception $e) {
+        echo 'Caught exception: ', $e->getMessage(), "\n";
+    }
+}
+
 ?>
-<html>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>PHP Login With Google</title>
-  <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  
- </head>
- <body>
-  <div class="container">
-   <br />
-   <h2 align="center">PHP Login With Google</h2>
-   <br />
-   <div class="panel panel-default">
-   <?php
-    echo '<div align="center">'.$google_login_btn . '</div>';
-   ?>
-   </div>
-  </div>
- </body>
-</html>
+
+<a href="<?= $google_client->createAuthUrl() ?>" class="btn-google m-b-20">
+    <img src="" alt="GOOGLE">
+    Google
+</a>

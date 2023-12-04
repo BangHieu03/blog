@@ -33,6 +33,17 @@ class user
             return false;
     }
 
+    public function checkEmail($email)
+    {
+        $db = new connect();
+        $select = "select * from users where email = '$email'";
+        $result = $db->pdo_query_one($select);
+        if ($result != null)
+            return true;
+        else
+            return false;
+    }
+
     public function userId($name)
     {
         $db = new connect();
@@ -49,10 +60,10 @@ class user
         $user = $db->pdo_query_one($select, $user_id);
         return $user;
     }
-    public function addUser($name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role, $create_at)
+    public function addUser($name, $email, $password, $phone, $avatar, $name_real, $date, $sex, $role, $password_reset_token, $create_at)
     {
         $db = new connect();
-        $insert = "insert into users( name, email, password, phone, avatar ,name_real, date, sex, role, create_at) values('$name', '$email', '$password','$phone','$avatar', '$name_real','$date', '$sex', '$role', '$create_at')";
+        $insert = "insert into users( name, email, password, phone, avatar ,name_real, date, sex, role, password_reset_token, create_at) values('$name', '$email', '$password','$phone','$avatar', '$name_real','$date', '$sex', '$role', '$password_reset_token', '$create_at')";
         $db->pdo_execute($insert);
     }
     public function deleteUser($user_id)
@@ -127,20 +138,5 @@ class user
         }
         return false; // Trả về false nếu tên đăng nhập không tồn tại
     }
-    public function changePassword($email, $newPassword, $confirmPassword)
-    {
-        if ($newPassword === $confirmPassword) {
-            $this->updatePassword($email, $newPassword);
-            echo "<div class='alert alert-success'>Đã đổi mật khẩu thành công.</div>";
-            return true;
-        } else {
-            echo "<div class='alert alert-danger'>Mật khẩu mới và mật khẩu xác nhận không khớp.</div>";
-            return false;
-        }
-    }
-    // public function getGoogleUser($goo) {
-    //     $user = (new Google_Service_Oauth2($goo))->userinfo_v2_me->get();
-    //     return $user;
-    // }
     
 }

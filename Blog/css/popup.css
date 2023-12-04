@@ -1,0 +1,76 @@
+body {
+    background: #000 url('https://www.w3schools.com/w3images/stars.jpg');
+    background-size: cover;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 65%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animate;
+    animation-duration: 0.5s;
+    border-radius: 10px;
+    color: #000;
+    text-align: center;
+}
+
+@keyframes animate {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: #1877f2;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: lightskyblue;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}

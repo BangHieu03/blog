@@ -46,8 +46,6 @@
     .form-container .btn-social .fa {
         margin-right: 5px;
     }
-
-    
 </style>
 <div class="container">
     <div class="row justify-content-center m-5">
@@ -59,23 +57,23 @@
                 <?php ?>
                 <form method="post" id="registrationForm">
                     <div class="form-group">
-                        <label for="name">Tên đăng ký:</label>
-                        <input type="text" id="name" name="name" class="form-control <?php echo isset($errors['name']) ? 'is-invalid' : ''; ?>" required>
+                        <label for="name">Tên tài khoản:</label>
+                        <input type="text" id="name" name="name" class="form-control <?php echo isset($errors['name']) ? 'is-invalid' : ''; ?>" placeholder="Tên tài khoản..." required>
                         <div class="invalid-feedback"><?php echo $errors['name'] ?? ''; ?></div>
                     </div>
                     <div class="form-group">
                         <label for="username">Địa chỉ email của bạn:</label>
-                        <input type="text" id="email" name="email" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : ''; ?>" required>
+                        <input type="text" id="email" name="email" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : ''; ?>" placeholder="Email..." required>
                         <div class="invalid-feedback"><?php echo $errors['email'] ?? ''; ?></div>
                     </div>
                     <div class="form-group">
                         <label for="password">Mật khẩu:</label>
-                        <input type="password" id="password" name="password" class="form-control <?php echo isset($errors['password']) ? 'is-invalid' : ''; ?>" required>
+                        <input type="password" id="password" name="password" class="form-control <?php echo isset($errors['password']) ? 'is-invalid' : ''; ?>" placeholder="Mật khẩu" required>
                         <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
                     </div>
                     <div class="form-group">
                         <label for="password">Xác nhận mật khẩu:</label>
-                        <input type="password" id="confirm" name="confirm" class="form-control<?php echo isset($errors['confirm']) ? 'is-invalid' : ''; ?>" required>
+                        <input type="password" id="confirm" name="confirm" class="form-control<?php echo isset($errors['confirm']) ? 'is-invalid' : ''; ?>" placeholder="Xác nhận mật khẩu" required>
                         <div class="invalid-feedback"><?php echo $errors['confirm'] ?? ''; ?></div>
                     </div>
                     <div class="form-group form-check">
@@ -120,8 +118,11 @@
                                 return;
                             }
 
+                            // Mã hóa mật khẩu
+                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
                             // Thêm người dùng mới
-                            $user->addUser($name, $email, $password, '', '', '', $date, $sex, $role, date('Y-m-d H:i:s'));
+                            $user->addUser($name, $email, $hashed_password, '', '', '', $date, $sex, $role, '', date('Y-m-d H:i:s'));
                             echo "Đăng ký thành công!";
                             $_SESSION['user_info'] = $user->getUserByName($name);
                             header('Location: index.php?pages=information&action=home');
@@ -158,14 +159,14 @@
     var inputs = document.querySelectorAll('#registrationForm input');
     var submitButton = document.getElementById('submitButton');
 
-    // Thêm sự kiện 'blur' (khi người dùng nhấp ra khỏi trường input) cho mỗi trường input
+    // Thêm sự kiện 'input' (khi người dùng nhập vào trường input) cho mỗi trường input
     inputs.forEach(function(input) {
-        input.addEventListener('blur', function() {
+        input.addEventListener('input', function() {
             // Kiểm tra xem trường input có được điền hay không
             if (input.value.trim() === '') {
                 // Nếu không, thêm class 'is-invalid' để hiển thị cảnh báo
                 input.classList.add('is-invalid');
-                input.nextElementSibling.textContent = 'Trường này là bắt buộc.';
+                input.nextElementSibling.textContent = 'Tên đăng ký không dược để trống.';
             } else {
                 // Nếu có, xóa class 'is-invalid'
                 input.classList.remove('is-invalid');
@@ -174,27 +175,36 @@
         });
     });
 
-    // Kiểm tra định dạng email khi người dùng nhấp ra khỏi trường email
-    document.getElementById('email').addEventListener('blur', function() {
+    // Kiểm tra định dạng email khi người dùng nhập vào trường email
+    document.getElementById('email').addEventListener('input', function() {
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
             this.classList.add('is-invalid');
             this.nextElementSibling.textContent = 'Địa chỉ email không hợp lệ.';
+        } else {
+            this.classList.remove('is-invalid');
+            this.nextElementSibling.textContent = '';
         }
     });
 
-    // Kiểm tra mật khẩu và xác nhận mật khẩu khi người dùng nhấp ra khỏi trường xác nhận mật khẩu
-    document.getElementById('confirm').addEventListener('blur', function() {
+    // Kiểm tra mật khẩu và xác nhận mật khẩu khi người dùng nhập vào trường xác nhận mật khẩu
+    document.getElementById('confirm').addEventListener('input', function() {
         if (this.value !== document.getElementById('password').value) {
             this.classList.add('is-invalid');
             this.nextElementSibling.textContent = 'Mật khẩu xác nhận không khớp với mật khẩu.';
+        } else {
+            this.classList.remove('is-invalid');
+            this.nextElementSibling.textContent = '';
         }
     });
 
-    // Kiểm tra độ dài mật khẩu khi người dùng nhấp ra khỏi trường mật khẩu
-    document.getElementById('password').addEventListener('blur', function() {
+    // Kiểm tra độ dài mật khẩu khi người dùng nhập vào trường mật khẩu
+    document.getElementById('password').addEventListener('input', function() {
         if (this.value.length < 8) {
             this.classList.add('is-invalid');
             this.nextElementSibling.textContent = 'Mật khẩu phải có ít nhất 8 ký tự.';
+        } else {
+            this.classList.remove('is-invalid');
+            this.nextElementSibling.textContent = '';
         }
     });
 
