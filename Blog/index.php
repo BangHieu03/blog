@@ -230,6 +230,7 @@
     }
     ob_end_flush();
     include './blogy-1.0.0/includes/footer.php';
+    
     ?>
     <div id="overlayer"></div>
     <div class="loader">
