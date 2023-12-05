@@ -52,6 +52,7 @@ ob_start();
                         <div class="col-2">
                             <a href="./index.php?pages=index&action=home" class="logo m-0 float-start">PolyBlog<span class="text-primary">.</span></a>
                         </div>
+                        
                         <div class="col-3 text-center">
                             <form action="#" class="search-form d-inline-block d-lg-none mr-1">
                                 <input type="text" class="form-control" placeholder="Search...">
