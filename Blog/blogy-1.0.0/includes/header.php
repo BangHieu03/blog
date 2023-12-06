@@ -91,14 +91,16 @@ ob_start();
                                             <div class="user-menu__top d-flex justify-content-between">
                                                 <img src="/images/<?php echo $_SESSION['user_info']['avatar']; ?>?t=<?php echo time(); ?>" alt="Avatar" style="border-radius: 50%; width: 60px; height: 60px">
                                                 <div class="ml-3">
-                                                    <div class="dropdown-item">@<?php echo $_SESSION['user_info']['name_real']; ?></div>
+                                                    <?php if (isset($_SESSION['user_info']) && is_array($_SESSION['user_info'])) : ?>
+                                                        <div class="dropdown-item">@<?php echo $_SESSION['user_info']['name_real']; ?></div>
+                                                    <?php endif; ?>
                                                     <a class="dropdown-item" href="./index.php?pages=edit_profile&action=home">Sửa</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="./index.php?pages=page_person&action=home">Trang cá nhân</a>
-                                        <?php if ($_SESSION['user_info']['role'] == 2) : ?>
+                                        <?php if (isset($_SESSION['user_info']) && is_array($_SESSION['user_info']) && $_SESSION['user_info']['role'] == 2) : ?>
                                             <a class="dropdown-item" href="./admin/index.php?act=layout&action=home">Quản trị</a>
                                         <?php endif; ?>
                                         <a class="dropdown-item" href="#">Quản lý nội dung</a>
@@ -106,7 +108,26 @@ ob_start();
                                         <hr>
                                         <a class="dropdown-item" href="./index.php?pages=logout&action=home">Đăng xuất</a>
                                     </div>
-                                    <span class="text-light"><?php echo $_SESSION['user_info']['name']; ?></span>
+                                    <?php if (isset($_SESSION['user_info']) && is_array($_SESSION['user_info'])) : ?>
+                                        <span class="text-light"><?php echo $_SESSION['user_info']['name']; ?></span>
+                                    <?php endif; ?>
+                                <?php elseif (isset($_SESSION['google_user_info'])) : ?>
+                                    <img src="<?php echo $_SESSION['google_user_info']['picture']; ?>" alt="Avatar" style="border-radius: 50%; width: 30px; height: 30px" class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        <div class="d-flex align-items-center m-lg-2">
+                                            <div class="user-menu__top d-flex justify-content-between">
+                                                <img src="<?php echo $_SESSION['google_user_info']['picture']; ?>" alt="Avatar" style="border-radius: 50%; width: 60px; height: 60px">
+                                                <div class="ml-3">
+                                                    <div class="dropdown-item">@<?php echo $_SESSION['google_user_info']['name']; ?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="./index.php?pages=page_person&action=home">Trang cá nhân</a>
+                                        <hr>
+                                        <a class="dropdown-item" href="./index.php?pages=logout&action=home">Đăng xuất</a>
+                                    </div>
+                                    <span class="text-light"><?php echo $_SESSION['google_user_info']['name']; ?></span>
                                 <?php else : ?>
                                     <a href="./index.php?pages=login&action=home" style="color:white">Đăng nhập</a>
                                 <?php endif; ?>

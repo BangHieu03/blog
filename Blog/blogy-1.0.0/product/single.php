@@ -1,10 +1,25 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/hero_5.jpg');">
   <div class="container">
     <div class="row same-height justify-content-center">
       <div class="col-md-6">
         <div class="post-entry text-center">
+<<<<<<< HEAD
           <h1 class="mb-4">Don’t assume your user data in the cloud is safe</h1>
+=======
+          <h1 class="mb-4">
+            <?php
+
+            $stmt = $db->prepare('SELECT articleId,articleDescrip, articleSlug ,articleTitle, articleContent, articleTags, articleDate  FROM techno_blog WHERE articleSlug = :articleSlug');
+            $stmt->execute(array(':articleSlug' => $_GET['id']));
+            $row = $stmt->fetch();
+            echo '<h1 class="mb-4"><a style="color: white;" href="' . $row['articleSlug'] . '">' . $row['articleTitle'] . '</a></h1>';
+            ?>
+          </h1>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
           <div class="post-meta align-items-center text-center">
             <figure class="author-figure mb-0 me-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
             <span class="d-inline-block mt-1">By Carl Atkinson</span>
@@ -24,6 +39,7 @@
       <div class="col-md-12 col-lg-8 main-content">
 
         <div class="post-content-body">
+<<<<<<< HEAD
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nam quas inventore, ut iure iste modi eos adipisci ad ea itaque labore earum autem nobis et numquam, minima eius. Nam eius, non unde ut aut sunt eveniet rerum repellendus porro.</p>
           <p>Sint ab voluptates itaque, ipsum porro qui obcaecati cumque quas sit vel. Voluptatum provident id quis quo. Eveniet maiores perferendis officia veniam est laborum, expedita fuga doloribus natus repellendus dolorem ab similique sint eius cupiditate necessitatibus, magni nesciunt ex eos.</p>
           <p>Quis eius aspernatur, eaque culpa cumque reiciendis, nobis at earum assumenda similique ut? Aperiam vel aut, ex exercitationem eos consequuntur eaque culpa totam, deserunt, aspernatur quae eveniet hic provident ullam tempora error repudiandae sapiente illum rerum itaque voluptatem. Commodi, sequi.</p>
@@ -47,6 +63,99 @@
         </div>
 
 
+=======
+
+
+
+          <?php
+          $timestamp = DateTime::createFromFormat('Y-m-d H:i:s', $row['articleDate'])->getTimestamp();
+          //Blog Title 
+          echo '<h1> <a href="./index.php?pages=index&action=deltal&id=' . $row['articleSlug'] . '">' . $row['articleTitle'] . '</a></h1>';
+          echo '<hr>';
+          echo "Thời gian đăng bài viết là: " . time_ago($timestamp);
+          echo '</p>';
+
+          $stmt2 = $db->prepare('SELECT categoryName, categorySlug   FROM techno_category, techno_cat_links WHERE techno_category.categoryId = techno_cat_links.categoryId AND techno_cat_links.articleId = :articleId');
+          $stmt2->execute(array(':articleId' => $row['articleId']));
+
+          $catRow = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+          $links = array();
+          foreach ($catRow as $cat) {
+            $links[] = "<a href='category/" . $cat['categorySlug'] . "'>" . $cat['categoryName'] . "</a>";
+          }
+          echo implode(", ", $links);
+          echo '</p>';
+          echo '<p>Tag: ';
+          $links = array();
+          $parts = explode(',', $row['articleTags']);
+          foreach ($parts as $tags) {
+            $links[] = "<a href='" . $tags . "'>" . $tags . "</a>";
+          }
+          echo implode(", ", $links);
+          echo '</p>';
+          echo '<hr>';
+
+
+
+          echo '<p>' . $row['articleContent'] . '</p>';
+
+          echo '</div>';
+          ?>
+          <?php
+          $baseUrl = "./index.php?pages=index&action=deltal&id=";
+          $slug = $row['articleSlug'];
+          $articleIdc = $row['articleId'];
+
+
+          ?>
+
+          <p><strong>Share </strong></p>
+          <ul>
+
+            <a target="_blank" href="http://www.facebook.com/sharer.php?u=<?php echo $baseUrl . $slug; ?>"> <img src="../../images/fb (1).png" style="width:45px;">
+
+              <a target="_blank" href="http://twitter.com/share?text=Visit the link &url=<?php echo $baseUrl . $slug; ?>&hashtags=blog,technosmarter,programming,tutorials,codes,examples,language,development">
+                <img src="../../images/fb (2).png" style="width:45px;">
+
+                <a target=" _blank" href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $baseUrl . $slug; ?>"> <img src="../../images/fb (3).png" style="width:45px;">
+
+          </ul>
+          <hr>
+        </div>
+
+
+        <h2> Bài viết được đề xuất:</h2>
+
+        <?php
+
+        // run query//select by current id and display the next 5 blog posts 
+
+        $recom = $db->query("SELECT * from techno_blog where articleId>$articleIdc order by articleId ASC limit 5");
+
+        // look through query
+        while ($row1 = $recom->fetch()) {
+          echo '<h2><a href="' . $row1['articleSlug'] . '">' . $row1['articleTitle'] . '</a></h2>';
+        }
+        ?>
+        <hr>
+        <h2>Các bài đăng trước đó:</h2>
+
+        <?php
+
+        // run query//select by current id and display the previous 5 posts
+
+        $previous = $db->query("SELECT * from techno_blog where articleId<$articleIdc order by articleId DESC limit 5");
+
+        // look through query
+        while ($row1 = $previous->fetch()) {
+          echo '<h2><a href="' . $row1['articleSlug'] . '">' . $row1['articleTitle'] . '</a></h2>';
+        }
+
+
+        ?>
+
+
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
         <div class="pt-5">
           <p>Categories: <a href="#">Food</a>, <a href="#">Travel</a> Tags: <a href="#">#manila</a>, <a href="#">#asia</a></p>
         </div>
@@ -326,5 +435,9 @@
     </div>
   </div>
 </section>
+<<<<<<< HEAD
 <!-- End posts-entry -->
 
+=======
+<!-- End posts-entry -->
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)

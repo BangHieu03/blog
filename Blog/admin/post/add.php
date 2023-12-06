@@ -2,7 +2,7 @@
 //lấy dữ liệu từ input trong form thêm mới
 if (isset($_POST['addProduct'])) {
     // Tạo một đối tượng mới từ class products
-    $product = new products();
+    $product = new posts();
     // Lấy dữ liệu từ form
     $name = $_POST['name'];
     $price = str_replace(',', '', $_POST['price']);
@@ -41,7 +41,7 @@ if (isset($_POST['addProduct'])) {
         }
     }
     // Thêm sản phẩm mới
-    $product->addUProducts($name, $price, $description, $img, $category_id, $author, $publishing, $pages, $date, $infor); // Thêm biến infor vào đây
+    $product->addUPosts($name, $price, $description, $img, $category_id, $author, $publishing, $pages, $date, $infor); // Thêm biến infor vào đây
     // Chuyển hướng người dùng về trang danh sách sản phẩm
     header('Location: ./index.php?act=products&action=list');
 }

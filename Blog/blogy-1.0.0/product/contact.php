@@ -44,26 +44,33 @@
 				</div>
 			</div>
 			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-				<form action="#">
-					<div class="row">
-						<div class="col-6 mb-3">
-							<input type="text" class="form-control" placeholder="Your Name">
-						</div>
-						<div class="col-6 mb-3">
-							<input type="email" class="form-control" placeholder="Your Email">
-						</div>
-						<div class="col-12 mb-3">
-							<input type="text" class="form-control" placeholder="Subject">
-						</div>
-						<div class="col-12 mb-3">
-							<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-						</div>
-
-						<div class="col-12">
-							<input type="submit" value="Send Message" class="btn btn-primary">
-						</div>
-					</div>
-				</form>
+			<form method="post" action="../../PHPMailer-master/send-email.php">
+    <div class="row">
+        <div class="col-6 mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+        </div>
+        
+        <div class="col-6 mb-3">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        
+        <div class="col-12 mb-3">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required>
+        </div>
+        
+        <div class="col-12 mb-3">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+        </div>
+        
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</form>
 			</div>
 		</div>
 	</div>

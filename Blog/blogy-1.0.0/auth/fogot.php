@@ -27,7 +27,7 @@
                                         $token = $user->createPasswordReset($email);
                                         $mail = new Mailer();
                                         $title = "Quên mật khẩu";
-                                        $url = "http://duan1/index.php?pages=login&action=reset&token=$token";
+                                        $url = "http://blog.com/index.php?pages=login&action=reset&token=$token";
                                         $content = "
                                         <html>
                                         <head>

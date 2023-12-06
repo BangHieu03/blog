@@ -4,7 +4,11 @@
   <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
       <div class="nav">
+<<<<<<< HEAD
       <a class="nav-link" href="./index.php?act=layout&action=home">
+=======
+        <a class="nav-link" href="./index.php?act=layout&action=home">
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
           <div class="sb-nav-link-icon"><i class="fa-solid fa-house active" style="color: #24e3a2;"></i></div>
           TRANG CHỦ
         </a>
@@ -16,7 +20,11 @@
           <div class="sb-nav-link-icon"><i class="fa-solid fa-blog" style="color: #24e3a2;"></i></i></div>
           BÀI VIẾT
         </a>
+<<<<<<< HEAD
         <a class="nav-link" href="./index.php?act=categories&action=list">
+=======
+        <a class="nav-link" href="./index.php?act=products&action=blog-categories">
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
           <div class="sb-nav-link-icon"><i class="fas fa-list" style="color: #24e3a2;"></i></i></div>
           THỂ LOẠI
         </a>
@@ -27,4 +35,8 @@
       </div>
     </div>
   </nav>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)

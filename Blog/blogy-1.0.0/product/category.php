@@ -1,12 +1,32 @@
 <div class="section search-result-wrap">
+<<<<<<< HEAD
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="heading">Category: Business</div>
+=======
+	<?php
+
+	$stmt = $db->prepare('SELECT categoryId,categoryName FROM techno_category WHERE categorySlug = :categorySlug');
+	$stmt->execute(array(':categorySlug' => $_GET['id']));
+	$row = $stmt->fetch();
+
+	//if post does not exists redirect user.
+	if ($row['categoryId'] == '') {
+		header('Location: ./index.php?pages=index&action=home');
+		exit;
+	}
+	?>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="heading">Category: <?php echo $row['categoryName']; ?></div>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 			</div>
 		</div>
 		<div class="row posts-entry">
 			<div class="col-lg-8">
+<<<<<<< HEAD
 				<div class="blog-entry d-flex blog-entry-search-item">
 					<a href="single.html" class="img-link me-4">
 						<img src="images/img_1_sq.jpg" alt="Image" class="img-fluid">
@@ -66,6 +86,54 @@
 						<p><a href="single.html" class="btn btn-sm btn-outline-primary">Read More</a></p>
 					</div>
 				</div>
+=======
+
+				<?php
+				try {
+
+					$stmt = $db->prepare('
+                SELECT 
+                    techno_blog.articleId, techno_blog.articleTitle, techno_blog.articleSlug, techno_blog.articleDescrip, techno_blog.articleDate 
+                FROM 
+                    techno_blog,
+                    techno_cat_links
+                WHERE
+                     techno_blog.articleId =  techno_cat_links.articleId
+                     AND  techno_cat_links.categoryId = :categoryId
+                ORDER BY 
+                    articleId DESC
+                ');
+					$stmt->execute(array(':categoryId' => $row['categoryId']));
+					while ($row = $stmt->fetch()) {
+						$timestamp = DateTime::createFromFormat('Y-m-d H:i:s', $row['articleDate'])->getTimestamp();
+						echo '<div>';
+						echo '<h1><a href="./index.php?pages=index&action=deltal&id=' . $row['articleSlug'] . '">' . $row['articleTitle'] . '</a></h1>';
+						echo "Thời gian đăng bài viết là: " . time_ago($timestamp);
+
+						$stmt2 = $db->prepare('SELECT categoryName, categorySlug   FROM techno_category, techno_cat_links WHERE techno_category.categoryId = techno_cat_links.categoryId AND techno_cat_links.articleId = :articleId');
+						$stmt2->execute(array(':articleId' => $row['articleId']));
+
+						$catRow = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+						$links = array();
+						foreach ($catRow as $cat) {
+							$links[] = "<a href='" . $cat['categorySlug'] . "'>" . $cat['categoryName'] . "</a>";
+						}
+						echo implode(", ", $links);
+
+						echo '</p>';
+						echo '<p>' . $row['articleDescrip'] . '</p>';
+
+						echo '<p><button class="readbtn"><a href="./index.php?pages=index&action=deltal&id=' . $row['articleSlug'] . '">Đọc ngay</a></button></p>';
+
+						echo '</div>';
+					}
+				} catch (PDOException $e) {
+					echo $e->getMessage();
+				}
+
+				?>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 
 				<div class="row text-start pt-5 border-top">
 					<div class="col-md-12">
@@ -94,7 +162,48 @@
 				<div class="sidebar-box">
 					<h3 class="heading">Popular Posts</h3>
 					<div class="post-entry-sidebar">
+<<<<<<< HEAD
 						<ul>
+=======
+						<h2>Bài viết gần đây</h2>
+						<?php
+						$sidebar = $db->query('SELECT articleTitle, articleSlug FROM techno_blog ORDER BY articleId DESC LIMIT 6');
+						while ($row = $sidebar->fetch()) {
+							echo '<p></p>';
+							echo ' <a href="./index.php?pages=index&action=deltal&id=' . $row['articleSlug'] . '" >' . $row['articleTitle'] . ' </a >';
+						}
+						?>
+
+						<h2>Categories</h2>
+
+						<?php
+						$stmt = $db->query('SELECT categoryName, categorySlug FROM techno_category ORDER BY categoryId DESC');
+						while ($row = $stmt->fetch()) {
+							echo '<p></p>';
+							echo '<a href="./index.php?pages=index&action=category&id=' . $row['categorySlug'] . '">' . $row['categoryName'] . '</a>';
+						}
+						?>
+
+						<h2>Tags </h2>
+						<?php
+						$tagsArray = [];
+						$stmt = $db->query('select distinct LOWER(articleTags) as articleTags from techno_blog where articleTags != "" group by articleTags');
+						while ($row = $stmt->fetch()) {
+							$parts = explode(',', $row['articleTags']);
+							foreach ($parts as $tag) {
+								$tagsArray[] = $tag;
+							}
+						}
+
+						$finalTags = array_unique($tagsArray);
+						foreach ($finalTags as $tag) {
+							echo '<p></p>';
+							echo "<a href='./index.php?pages=index&action=tag&id=" . $tag . "'>" . ucwords($tag) . "</a>";
+						}
+
+						?>
+						<!-- <ul>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 							<li>
 								<a href="">
 									<img src="images/img_1_sq.jpg" alt="Image placeholder" class="me-4 rounded">
@@ -128,7 +237,11 @@
 									</div>
 								</a>
 							</li>
+<<<<<<< HEAD
 						</ul>
+=======
+						</ul> -->
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 					</div>
 				</div>
 				<!-- END sidebar-box -->

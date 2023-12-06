@@ -47,7 +47,7 @@
 
 <body>
     <?php
-    session_start();
+    // session_start();
     ob_start();
     include './blogy-1.0.0/pdo/pdo.php';
     include './admin/users/user.php';
@@ -229,6 +229,7 @@
     }
     ob_end_flush();
     include './blogy-1.0.0/includes/footer.php';
+    
     ?>
     <div id="overlayer"></div>
     <div class="loader">

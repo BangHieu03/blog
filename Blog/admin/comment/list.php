@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+=======
+<?php
+require_once('./includes/config.php');
+
+
+
+
+if (isset($_GET['delpost'])) {
+
+    $stmt = $db->prepare('DELETE FROM discussion WHERE id = :id');
+    $stmt->execute(array(':id' => $_GET['delpost']));
+
+    header('Location: blog-comments.php?action=deleted');
+    exit;
+}
+
+?>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +65,7 @@
                                     </tr>
                                 </thead>
                                 <?php
+<<<<<<< HEAD
                                 $comment = new comment();
                                 $commentDetail = new commentDetail();
                                 $user = new user();
@@ -96,6 +116,53 @@
                                 }
                                 ?>
                             </table>
+=======
+                                //show message from add / edit page
+                                if (isset($_GET['action'])) {
+                                    echo '<h3>Post ' . $_GET['action'] . '.</h3>';
+                                }
+                                ?>
+
+                                <table>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Comments</th>
+                                        <th>username</th>
+                                        <th>post</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    <?php
+                                    try {
+
+                                        $stmt = $db->query('SELECT id,parent_comment,student,post,date FROM discussion ORDER BY id DESC');
+                                        while ($row = $stmt->fetch()) {
+
+                                            echo '<tr>';
+                                            echo '<td>' . $row['id'] . '</td>';
+                                            echo '<td>' . $row['parent_comment'] . '</td>';
+                                            echo '<td>' . $row['student'] . '</td>';
+                                            echo '<td>' . $row['post'] . '</td>';
+
+                                    ?>
+
+                                            <td>
+                                                <button class="editbtn"> <a href="edit-blog-page.php?pageId=<?php echo $row['id']; ?>">Edit</a> </button>
+                                            </td>
+                                            <td>
+                                                <button class="delbtn"> <a href="javascript:delpost('<?php echo $row['id']; ?>','<?php echo $row['pageTitle']; ?>')">Delete</a></button>
+                                            </td>
+
+                                    <?php
+                                            echo '</tr>';
+                                        }
+                                    } catch (PDOException $e) {
+                                        echo $e->getMessage();
+                                    }
+                                    ?>
+                                </table>
+                                <p><button class="editbtn"><a href='./index.php?act=comment&action=add'>Add New comment</a></button></p>
+>>>>>>> 14f18fc ([TASK]-GHÉP CODE[POST...] ĐI ĐƯỜNG DẪN)
                         </div>
                     </div>
                 </div>

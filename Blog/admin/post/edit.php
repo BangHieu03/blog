@@ -3,12 +3,12 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 // Tạo một đối tượng mới từ class products
-$product = new products();
+$product = new posts();
 
 // Lấy ID sản phẩm từ URL
 $id = $_GET['id'];
 
-$currentProduct = $product->getByIdProducts($id);
+$currentProduct = $product->getByIdPosts($id);
 
 // Lưu giá trị ban đầu trước khi chỉnh sửa
 $_SESSION['original_values'] = array(

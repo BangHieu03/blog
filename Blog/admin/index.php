@@ -25,7 +25,7 @@ ob_start();
   <?php
   include "../blogy-1.0.0/pdo/pdo.php";
   include "./users/user.php";
-  include "./products/product.php";
+  include "./post/product.php";
   include "./categories/category.php";
   include "./comment/comment.php";
   include "./comment/comment_detail/detail.php";
