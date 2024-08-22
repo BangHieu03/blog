@@ -12,30 +12,27 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com./css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
     <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="/css/tiny-slider.css">
-    <link rel="stylesheet" href="/css/aos.css">
-    <link rel="stylesheet" href="/css/glightbox.min.css">
-    <link rel="stylesheet" href="/css/flatpickr.min.css">
-    <link rel="stylesheet" href="/css/down-menu.css">
-    <link rel="stylesheet" href="/css/aside.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/validate.css">
-    <link rel="stylesheet" href="/css/faceboo.css">
-    <link rel="stylesheet" href="/css/page_person.css">
-    <link rel="stylesheet" href="/css/popup.css">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-
+    <link rel="stylesheet" href="./css/tiny-slider.css">
+    <link rel="stylesheet" href="./css/aos.css">
+    <link rel="stylesheet" href="./css/glightbox.min.css">
+    <link rel="stylesheet" href="./css/flatpickr.min.css">
+    <link rel="stylesheet" href="./css/down-menu.css">
+    <link rel="stylesheet" href="./css/aside.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/validate.css">
+    <link rel="stylesheet" href="./css/faceboo.css">
+    <link rel="stylesheet" href="./css/page_person.css">
+    <link rel="stylesheet" href="./css/popup.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
@@ -49,6 +46,38 @@
 </head>
 
 <body>
+    <script>
+        let __protocol = document.location.protocol;
+        let __baseUrl = __protocol + '//livechat.fpt.ai/v35/src';
+
+        let prefixNameLiveChat = 'Blog';
+        let objPreDefineLiveChat = {
+                appCode: 'a28028226d95c7972aa6e1d373da294a',
+                themes: '',
+                appName: prefixNameLiveChat ? prefixNameLiveChat : 'Live support',
+                thumb: '',
+                icon_bot: ''
+            },
+            appCodeHash = window.location.hash.substr(1);
+        if (appCodeHash.length == 32) {
+            objPreDefineLiveChat.appCode = appCodeHash;
+        }
+
+        let fpt_ai_livechat_script = document.createElement('script');
+        fpt_ai_livechat_script.id = 'fpt_ai_livechat_script';
+        fpt_ai_livechat_script.src = __baseUrl + '/static/fptai-livechat.js';
+        document.body.appendChild(fpt_ai_livechat_script);
+
+        let fpt_ai_livechat_stylesheet = document.createElement('link');
+        fpt_ai_livechat_stylesheet.id = 'fpt_ai_livechat_script';
+        fpt_ai_livechat_stylesheet.rel = 'stylesheet';
+        fpt_ai_livechat_stylesheet.href = __baseUrl + '/static/fptai-livechat.css';
+        document.body.appendChild(fpt_ai_livechat_stylesheet);
+
+        fpt_ai_livechat_script.onload = function() {
+            fpt_ai_render_chatbox(objPreDefineLiveChat, __baseUrl, 'livechat.fpt.ai:443');
+        }
+    </script>
     <?php
     session_start();
     ob_start();
@@ -223,6 +252,9 @@
                         break;
                     case 'config':
                         require_once '../Github_login/config.php';
+                        break;
+                    case 'logout':
+                        require_once '../Github_login/logout.php';
                         break;
                 }
                 break;

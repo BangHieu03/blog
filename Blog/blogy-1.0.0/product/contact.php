@@ -16,51 +16,49 @@
 
 					<div class="address mt-2">
 						<i class="icon-room"></i>
-						<h4 class="mb-2">Location:</h4>
-						<p>43 Raymouth Rd. Baltemoer,<br> London 3910</p>
-					</div>
-
-					<div class="open-hours mt-4">
-						<i class="icon-clock-o"></i>
-						<h4 class="mb-2">Open Hours:</h4>
-						<p>
-							Sunday-Friday:<br>
-							11:00 AM - 2300 PM
-						</p>
+						<h4 class="mb-2">Địa chỉ:</h4>
+						<p>Đường 30 tháng 4<br> Cần thơ</p>
 					</div>
 
 					<div class="email mt-4">
 						<i class="icon-envelope"></i>
 						<h4 class="mb-2">Email:</h4>
-						<p>info@Untree.co</p>
+						<p>quangndpc05293@fpt.edu.vn</p>
 					</div>
 
 					<div class="phone mt-4">
 						<i class="icon-phone"></i>
-						<h4 class="mb-2">Call:</h4>
-						<p>+1 1234 55488 55</p>
+						<h4 class="mb-2">Số điện thoại liên hệ</h4>
+						<p>+8488821666</p>
 					</div>
 
 				</div>
 			</div>
 			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-				<form action="#">
+				<form method="post" action="../../PHPMailer-master/sent-email.php">
 					<div class="row">
 						<div class="col-6 mb-3">
-							<input type="text" class="form-control" placeholder="Your Name">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
 						</div>
+
 						<div class="col-6 mb-3">
-							<input type="email" class="form-control" placeholder="Your Email">
+							<label for="email">Email</label>
+							<input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
 						</div>
+
 						<div class="col-12 mb-3">
-							<input type="text" class="form-control" placeholder="Subject">
+							<label for="subject">Subject</label>
+							<input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required>
 						</div>
+
 						<div class="col-12 mb-3">
-							<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+							<label for="message">Message</label>
+							<textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
 						</div>
 
 						<div class="col-12">
-							<input type="submit" value="Send Message" class="btn btn-primary">
+							<button type="submit" class="btn btn-primary">Send</button>
 						</div>
 					</div>
 				</form>

@@ -58,6 +58,5 @@ if (isset($_GET["code"])) {
 ?>
 
 <a href="<?= $google_client->createAuthUrl() ?>" class="btn-google m-b-20">
-    <img src="" alt="GOOGLE">
-    Google
+    <i class="fab fa-google" style="color: #ffffff;"></i> Đăng nhập với Google
 </a>

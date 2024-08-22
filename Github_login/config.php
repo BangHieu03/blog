@@ -6,12 +6,12 @@ define('DB_HOST', 'localhost');
 define('DB_USERNAME', 'root'); 
 define('DB_PASSWORD', 'mysql'); 
 define('DB_NAME', 'tktw_duan1'); 
-define('DB_USER_TBL', 'users_git'); 
+define('DB_USER_TBL', 'users'); 
  
 // GitHub API configuration 
 define('CLIENT_ID', '50f38088acd22c1a8a23'); 
 define('CLIENT_SECRET', 'a19ebfc6da7444cc467fc80362c20c5e0748cb45'); 
-define('REDIRECT_URL', 'http://localhost/Github_login/index.php?pages=github'); 
+define('REDIRECT_URL', 'http://blog.com/index.php?pages=github&action=index'); 
  
 // Start session 
 if(!session_id()){ 

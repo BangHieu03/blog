@@ -1,10 +1,12 @@
+
+
 <body data-logged-in="<?php echo isset($_SESSION['user_info']) ? 'true' : 'false'; ?>">
 	<section class="section bg-light">
 		<div class="container d-flex justify-content-center align-items-center" style="background-color: #3D5662; max-width: 100%;">
 			<img src="/images/banner.png" class="img-fluid" alt="" style="height: 597px; background-color: #3D5662; width: 100%;">
 		</div>
 	</section>
-	
+
 	<!-- End retroy layout blog posts -->
 	<div id="myPopup" class="popup">
 		<div class="popup-content">
@@ -64,18 +66,17 @@
 			</div>
 		</div>
 	</div>
-	<div id="chatbot" class="chatbox">
+	<!-- <div id="chatbot" class="chatbox">
 		<div class="chat-header">
 			<h2>ChatGPT</h2>
 		</div>
 		<div class="chat-content" id="chatContent">
-			<!-- Messages will be added here -->
 		</div>
 		<div class="chat-footer">
 			<input type="text" id="userInput" placeholder="Type your message...">
 			<button id="sendBtn">Send</button>
 		</div>
-	</div>
+	</div> -->
 	<!-- Start posts-entry -->
 	<section class="section posts-entry">
 		<div class="container">

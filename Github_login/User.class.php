@@ -7,7 +7,7 @@
  * @license    http://www.codexworld.com/license 
  */ 
  
-class User { 
+class user { 
      
     function pdo_get_connection()
     {

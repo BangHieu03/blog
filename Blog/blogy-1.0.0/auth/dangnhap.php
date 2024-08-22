@@ -97,7 +97,7 @@
                         }
                     }
                     // Kết thúc đệm đầu ra và gửi đầu ra đến trình duyệt
-                    
+
                     ?>
                     <div class="d-flex align-items-center justify-content-between my-4 default_cursor_cs">
                         <hr class="flex-fill m-0"> <span class="mx-3">
@@ -113,7 +113,12 @@
                             <i class="fab fa-facebook-f" style="color: #ffffff;"></i> <a class="text-light" href="./index.php?pages=facebook&action=index">Đăng nhập với Facebook</a>
                         </button>
                         <button class="btn btn-block btn-social btn-github">
-                            <i class="fab fa-github" style="color: #ffffff;"></i><a class="text-light" href="./index.php?pages=github&action=index">Đăng nhập với Github</a>
+                            <i class="fab fa-github" style="color: #ffffff;"></i>
+                            <?php if (!isset($_SESSION['user_info'])) : ?>
+                                <a class="text-light" href="./index.php?pages=github&action=index">Đăng nhập với Github</a>
+                            <?php else : ?>
+                                <a class="text-light" href="<?php echo $_SESSION['user_info']['link']; ?>" target="_blank">Tới trang Github</a>
+                            <?php endif; ?>
                         </button>
                     </div>
                 </form>
@@ -171,4 +176,18 @@
             alert('Vui lòng hoàn thành form đúng như đã quy định.');
         }
     });
+</script>
+<script>
+$(document).ready(function(){
+    $("#google-login-btn").click(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: './index.php?pages=google&action=index',
+            type: 'get',
+            success: function(response) {
+                // Xử lý phản hồi từ máy chủ ở đây
+            }
+        });
+    });
+});
 </script>

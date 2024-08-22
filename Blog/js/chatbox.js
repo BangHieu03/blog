@@ -2,7 +2,7 @@
 document.getElementById('sendBtn').addEventListener('click', function() {
     var userInput = document.getElementById('userInput').value;
     $.ajax({
-        url: 'https://api.openai.com/v1/engines/davinci-codex/completions',
+        url: 'http://blog.com/index.php?pages=index&action=home',
         type: 'POST',
         headers: {
             'Authorization': 'Bearer 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',
